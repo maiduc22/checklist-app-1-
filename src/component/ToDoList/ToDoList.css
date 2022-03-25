@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+*{
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 17.5px;
+
+}
+
+.list-task {
+    background-color: aqua;
+    width: 500px; 
+    margin-left: 500px;
+    margin-top: 30px;
+    padding: 0px;
+}
+
+.list-task input{
+    border: none;
+    background-color: aqua;
+    text-align: left;
+    font-size: 20px;
+}
+
+.each-task {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    justify-content:space-around
+}
+
+.check-box{
+  background-color: #fff;
+  margin: 0;
+  color: currentColor;
+  width: 1em;
+  height: 1em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+}
