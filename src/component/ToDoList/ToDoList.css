@@ -7,7 +7,7 @@
 }
 
 .list-task {
-    background-color: aqua;
+    background-color: #1aa7ec;
     width: 500px; 
     margin-left: 500px;
     margin-top: 30px;
@@ -16,7 +16,7 @@
 
 .list-task input{
     border: none;
-    background-color: aqua;
+    background-color: #1aa7ec;
     text-align: left;
     font-size: 20px;
 }

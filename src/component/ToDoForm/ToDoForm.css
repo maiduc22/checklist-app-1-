@@ -4,7 +4,7 @@
 
 .input-task{
     width: 490px;
-    background-color: aqua;
+    background-color: #1aa7ec;
     margin-left: 500px;
     display: flex;
     justify-content: space-around;
@@ -12,8 +12,8 @@
 }
 
 input {
-    background: aqua;
-    border: #405cf5;
+    background: #1aa7ec;
+    border: #1aa7ec;
 }
 input:focus{
     outline: none;
