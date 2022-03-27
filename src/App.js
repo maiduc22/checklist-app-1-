@@ -17,7 +17,7 @@ function App() {
     <div className='app-container'>
       <div className='app-wrapper'>
         <div className='header'>
-          <h1>Checklist App</h1>
+          <h1>CHECKLIST APP</h1>
         </div>
         <div>
           <ToDoForm
