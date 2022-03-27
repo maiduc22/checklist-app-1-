@@ -9,8 +9,9 @@ function ToDoList({todos, setTodos}){
     }
     function handleChange(e, index){
         let newarr = [...todos];
-        newarr.splice(index, 1, e.target.value)
+        newarr[index].title = e.target.value;
         setTodos(newarr);
+        console.log(todos[index])
     }
     function handleEdit(index){
         document.getElementsByClassName("todo")[index].focus();
