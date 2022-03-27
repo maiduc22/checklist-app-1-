@@ -1,42 +1,59 @@
 import React from "react";
 import "./ToDoList.css"
 
-/*
-component ToDoList nhận vào 3 props:
-    list: là 1 mảng lưu trữ các task đc thêm vào
-    remove: là 1 function lấy từ component App để xóa đi task dựa trên id của nó trong list[]
-    update: cập nhật giá trị mới của task cũ
-*/ 
-function ToDoList({list, remove, update}){
-    function handleClick(id){
-        remove(id);
+function ToDoList({todos, setTodos}){
+    function handleDelete(index){
+        let newtodos = [...todos];
+        newtodos.splice(index, 1);
+        setTodos(newtodos);
     }
-    
+    function handleChange(e, index){
+        let newarr = [...todos];
+        newarr.splice(index, 1, e.target.value)
+        setTodos(newarr);
+    }
+    function handleEdit(index){
+        document.getElementsByClassName("todo")[index].focus();
+    }
+    function handleDone(index){
+        let a = document.getElementsByClassName("todo")[index];
+        if (!todos[index].isDone){
+            todos[index].isDone = true;
+            a.style.textDecoration = "line-through";
+            a.style.opacity = "0.5";
+        }
+        else{
+            todos[index].isDone = false;
+            a.style.textDecoration = "none";
+            a.style.opacity = "1";
+        }
+        
+    }
     return (
-        <div className="list-task">
-                {
-                    /* map method nhận 2 đối số: item là từng phần tử trong mảng list và id là index của phần tử.
-                        Kqua trả ra là 1 div gồm 1 form và 1 button (button có chức năng remove)
-                    */
-                    list.map( (item, id) =>                 
-                        <div className="each-task" key={id}>
-                            <form onSubmit={(e) => e.preventDefault()}>
-                                <input    //input hiển thị task đã dc add, có thể trực tiếp chỉnh sửa luôn task cũ trong input này
-                                    value={item} 
-                                    onChange={(e)=> update(e.target.value, id)}>
-                                </input> 
-                                <input 
-                                    className="check-box" 
-                                    type="checkbox">  
-                                </input>
-                            </form>   
-                            <button //gọi tới hàm handleClick, hàm này lại gọi tới prop remove.
-                                onClick={handleClick}>
-                                    Remove
-                            </button> 
-                        </div>
-                        )
-                }
+        <div>
+            {
+                todos.map((todo, index) => (
+                    <li className="todo-list" key={index}>
+                       <input 
+                            onClick={(e) => e.preventDefault()}
+                            className= "todo"
+                            value={todo.title}
+                            onChange={(e) => handleChange(e, index)}
+                       ></input> 
+                       <div>
+                            <button className="btn-complete" onClick={() => handleDone(index)}>
+                                <i className="fa fa-check-circle-o"></i>
+                            </button>
+                            <button className="btn-edit" onClick={() => handleEdit(index)}>
+                                <i className="fa fa-edit"></i>
+                            </button>
+                            <button className="btn-delete" onClick={()=> handleDelete(index)}>
+                                <i className="fa fa-trash-o"></i>
+                            </button>
+                       </div>
+                    </li>
+                ))
+            }
         </div>
     )
 }
