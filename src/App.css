@@ -18,9 +18,9 @@
     min-height: 650px;
     padding: 30px;
     box-sizing: border-box;
-    border: 1px solid #c89666;
+    border: 1px solid ;
     border-radius: 20px;
-    box-shadow: 3px 6px 40px black;
+    box-shadow: 0px 5px 10px black;
 }
 
 .header h1{
