@@ -11,7 +11,7 @@ function ToDoForm({input, setInput, todos, setTodos}){
         else {
             e.preventDefault();
             let newtodos = [...todos];
-            newtodos.push({id: Math.floor(Math.random()*100000), title: input, isDone: false});
+            newtodos.push({id: Math.floor(Math.random()*100000), title: input, isDone: false, show: false ,isTime: false});
             setTodos(newtodos);
             setInput('');
         }

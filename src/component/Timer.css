@@ -1,0 +1,31 @@
+.timer {
+    display: flex;
+    width: 400px;
+    border: 1px solid #c89666;
+    padding: 10px;
+    border-radius: 10px;
+    max-height: 30px;
+    color: white;
+    align-items: center;
+    font-size: 20px;
+}
+
+.timer input{
+    width: 30px;
+    background-color: #12343b;
+    border: 1px solid #c89666;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-right: 5px;
+}
+.timer form{
+    margin-right: 20px;
+}
+
+.timer-wrapper{
+    width: 150px;
+    padding: 15px;
+}
+

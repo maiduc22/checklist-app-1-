@@ -1,0 +1,14 @@
+.input-time{
+    display: flex;
+    width: 250px;
+}
+
+.input-time input {
+    width: 30px;
+    background-color: #12343b;
+    border: none;
+    color: #ccc;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-right: 10px;
+}
