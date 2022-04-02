@@ -86,11 +86,11 @@ const Timer = ({index, intervalRef, setTodos, todos}) => {
     function handleClick(){
         clearTimer(getEndtime());
         setTodos([...todos], todos[index].isTime = true);
-        // document.getElementsByClassName('todo-list')[index].style.border = '#c89666 1px solid';
-        // document.getElementsByClassName('todo')[index].style.color = 'white';
-        // document.getElementsByClassName('btn-complete')[index].style.color = '#c89666';
-        // document.getElementsByClassName('btn-edit')[index].style.color = '#c89666';            document.getElementsByClassName('btn-delete')[index].style.color = '#c89666';
-        // document.getElementsByClassName('btn-timer')[index].style.color = '#c89666';
+        document.getElementsByClassName('todo-list')[index].style.border = '#c89666 1px solid';
+        document.getElementsByClassName('todo')[index].style.color = 'white';
+        document.getElementsByClassName('btn-complete')[index].style.color = '#c89666';
+        document.getElementsByClassName('btn-edit')[index].style.color = '#c89666';            document.getElementsByClassName('btn-delete')[index].style.color = '#c89666';
+        document.getElementsByClassName('btn-timer')[index].style.color = '#c89666';
     };
 
     return (
