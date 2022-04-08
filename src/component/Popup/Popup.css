@@ -1,0 +1,46 @@
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-container{
+    position: relative;
+    display: flex;
+    padding: 30px;
+    max-height: 500px;
+    max-width: 600px;
+    background-color: #12343b;
+    border-radius: 10px;
+}
+.popup-container h1{
+    color: white;
+}
+
+.btn-addtodo, .btn-close {
+    width: 100px;
+
+}
+.btn-addtodo:hover, .btn-close:hover {
+    background-color: #c89666;color: #12343b;
+    
+    border: none;
+}
+
+label{
+    color: white;
+    border: #c89666 1px solid;
+    padding: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+p{
+    color: white;
+}

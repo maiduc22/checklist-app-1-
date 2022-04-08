@@ -1,22 +1,32 @@
-import React, {useState, useRef} from "react";
-import "./ToDoList.css"
-import Timer from "../Timer";
+import React from "react";
+import Level from "../Level/Level";
+import "./ToDoList.css";
+import {message} from "antd";
+import { Row, Col, Divider } from 'antd';
+import 'antd/dist/antd.css';
+import {
+    CheckOutlined,
+    DeleteOutlined
+} from '@ant-design/icons';
 
-function ToDoList({todos, setTodos}){
+function ToDoList({todos, setTodos, search}){
 
 
     function handleDelete(index){
         let newtodos = [...todos];
         newtodos.splice(index, 1);
         setTodos(newtodos);
+        message.warning("You deleted a task!")
     }
     function handleChange(e, index){
         let newarr = [...todos];
         newarr[index].title = e.target.value;
-        setTodos(newarr);
+        if (e.target.value == '') {handleDelete(index)}
+        setTodos(newarr);           
     }
     function handleEdit(index){
         document.getElementsByClassName("todo")[index].focus();
+        message.success("You've updated a task")
     }
     function handleDone(index){
         let a = document.getElementsByClassName("todo")[index];
@@ -24,35 +34,14 @@ function ToDoList({todos, setTodos}){
             todos[index].isDone = true;
             a.style.textDecoration = "line-through";
             a.style.opacity = "0.5";
+            message.success("You've finished a task")
         }
         else{
             todos[index].isDone = false;
             a.style.textDecoration = "none";
             a.style.opacity = "1";
         }
-        
-    }
-
-    const intervalRef = useRef(null);
-    function handleTime(index){
-        let a = document.getElementsByClassName('todo')[index];
-        let b = document.getElementsByClassName('todo-list')[index];
-        let newarr = [...todos];
-        newarr[index].isTime = false;
-        if (!newarr[index].show) {
-            newarr[index].show  = true;
-        }
-        else {
-            newarr[index].show = false;
-        }
-        clearInterval(intervalRef.current);
-        setTodos(newarr);
-        document.getElementsByClassName('todo-list')[index].style.border = '#c89666 1px solid';
-        document.getElementsByClassName('todo')[index].style.color = 'white';
-        document.getElementsByClassName('btn-complete')[index].style.color = '#c89666';
-        document.getElementsByClassName('btn-edit')[index].style.color = '#c89666';
-        document.getElementsByClassName('btn-delete')[index].style.color = '#c89666';
-        document.getElementsByClassName('btn-timer')[index].style.color = '#c89666';
+        console.log(todos)
     }
 
     return (
@@ -60,33 +49,29 @@ function ToDoList({todos, setTodos}){
             {
                 todos.map((todo, index) => (
                     <li key={index}>
-                       <div className="todo-list">
-                        <input
-                            onClick={(e) => e.preventDefault()}
-                            className= "todo"
-                            value={todo.title}
-                            onChange={(e) => handleChange(e, index)}
-                        ></input> 
-                        <div className="btn-wrapper">
-                            <button className="btn-timer" onClick={() => handleTime(index)}>
-                                <i className="fa fa-clock-o"></i>
-                            </button>
-                            <button className="btn-complete" onClick={() => handleDone(index)}>
-                                <i className="fa fa-check-circle-o"></i>
-                            </button>
-                            <button className="btn-edit" onClick={() => handleEdit(index)}>
-                                <i className="fa fa-edit"></i>
-                            </button>
-                            <button className="btn-delete" onClick={()=> handleDelete(index)}>
-                                <i className="fa fa-trash-o"></i>
-                            </button>
-                        </div>
-                       </div>                      
-                            {todo.show&& 
-                            
-                                <Timer index={index} intervalRef={intervalRef} todos={todos} setTodos={setTodos}></Timer>
-                            
-                            }
+                        <Row  className='row-input' >
+                            <Col span={1}><div className={`label-${todo.level}`}></div></Col>
+                            <Col span={5}>{todo.deadline}</Col>
+                            <Col span={10}>
+                                <input
+                                    onClick={(e) => e.preventDefault()}
+                                    className= "todo"
+                                    value={todo.title}
+                                    onChange={(e) => handleChange(e, index)}
+                                ></input>
+                            </Col>
+                            <Col span={4}>
+                                <Level level={todo.level}></Level>
+                            </Col>
+                            <Col span={4}>
+                                <button className="btn-done" onClick={() => handleDone(index)}>
+                                    <CheckOutlined style={{color: '#4D77FF'}}/>
+                                </button>
+                                <button className="btn-delete" onClick={()=> handleDelete(index)}>
+                                    <DeleteOutlined style={{color: '#FD5D5D'}} />
+                                </button>
+                            </Col>
+                        </Row>
                     </li>
                 ))
             }

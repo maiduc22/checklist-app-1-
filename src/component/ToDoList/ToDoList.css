@@ -1,14 +1,54 @@
-.input-time{
-    display: flex;
-    width: 250px;
+li {
+    list-style: none;
 }
 
-.input-time input {
-    width: 30px;
-    background-color: #12343b;
+.row-input{
+    background-color: white;
+    border-radius: 5px ;
+    margin: 5px;
+    padding: 0px;
+    height: 40px;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+}
+
+.label-Highest{
+    background-color: #FFA8A8;
+    width: 10px;
+    height: 40px;
+    border-radius: 5px 0 0 5px; 
+}
+.label-Critical{
+    background-color: #FDD7AA;
+    width: 10px;
+    height: 40px;
+    border-radius: 5px 0 0 5px; 
+}
+.label-Alarming{
+    background: #F6FFA4;
+    width: 10px;
+    height: 40px;
+    border-radius: 5px 0 0 5px; 
+}
+.label-Low{
+    width: 10px;
+    height: 40px;
+    background: #B6FFCE;
+    border-radius: 5px 0 0 5px; 
+}
+
+.btn-done, .btn-delete{
     border: none;
-    color: #ccc;
-    font-size: 20px;
-    padding-left: 10px;
-    margin-right: 10px;
+    background: none;
+    margin: 5px;
+}
+
+
+.row-input input{
+    border: none;
+}
+
+.row-input input:focus{
+    outline: none;
 }

@@ -3,98 +3,33 @@
     padding: 0;
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    
 }
 
 .app-container{
-    background-image: linear-gradient(to right bottom, #e1b382, #c89666);
+    background-image: linear-gradient(to right bottom, #B8FFF9, #B8FFF9);
     min-height: 100vh;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 10px;
 }
 
 .app-wrapper{
-    background: #12343b;
-    min-width: 500px;
-    min-height: 650px;
-    padding: 30px;
-    box-sizing: border-box;
-    border: 1px solid ;
-    border-radius: 20px;
-    box-shadow: 0px 5px 10px black;
-}
-
-.header h1{
-    color: #fff;
-    text-align: center;
-    margin: 30px 0;
-    font-weight: 700;
-}
-
-.task-input{
-    outline: none;
-    width: 260px;
-    padding: 15px;
-    margin-right: 25px;
-    background-color: white;
-    border: solid 1px #c89666;
-    border-radius: 10px;
-    font-size: 20px;
-    color: black;
-}
-
-.btn-add{
-    width: 105px;
-    padding: 15px;
-    font-size: 20px;
-    border-radius: 10px;
-    border: 0px;
-    background: #e1b382;
-    cursor: pointer;
-}
-
-.todo-list{
-    display: flex;
-    margin: 20px 0;
-    border: 1px solid #c89666;
-    border-radius: 10px;
+    background: #EFFFFD;
+    min-width: 700px;
+    min-height: 450px;
     padding: 10px;
-    max-height: 30px;
-}
-
-.todo-list input{
-    pointer-events: none;
-}
-.todo-list input {
-    width: 250px;
-    background-color: #12343b;
+    box-sizing: border-box;
     border: none;
-    color: white;
-    font-size: 20px;
-    padding-left: 10px;
-    margin-right: 10px;
-}
-.todo-list input:focus, button:focus{
-    outline: none;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px black;
 }
 
-.btn-complete, .btn-edit, .btn-delete, .btn-timer, .btn-repeat{
-    outline: none;
-    border: none;
-    background-color: transparent;
-    font-size: 25px;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-right: 10px;
-    color: #c89666;
-}
-
-li {
-    list-style-type: none
-}
-
-.todo-list {
-    width: fit-content;
-    padding-right: 13px;
+.Row{
+    border-radius: 2px;
+    margin: 5px;
+    padding: 0px;
+    height: 40px;
+    align-items: center;
+    text-align: center;
 }
