@@ -7,33 +7,34 @@ li {
     border-radius: 5px ;
     margin: 5px;
     padding: 0px;
-    height: 40px;
+    height: 50px;
     align-items: center;
     text-align: center;
     font-size: 14px;
+    box-shadow: 3px 3px #E2E4E5;
 }
 
 .label-Highest{
     background-color: #FFA8A8;
     width: 10px;
-    height: 40px;
+    height: 50px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Critical{
     background-color: #FDD7AA;
     width: 10px;
-    height: 40px;
+    height: 50px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Alarming{
     background: #F6FFA4;
     width: 10px;
-    height: 40px;
+    height: 50px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Low{
     width: 10px;
-    height: 40px;
+    height: 50px;
     background: #B6FFCE;
     border-radius: 5px 0 0 5px; 
 }
@@ -51,4 +52,44 @@ li {
 
 .row-input input:focus{
     outline: none;
+}
+
+.todo-list-wrapper{
+    height: 365px;
+    overflow-y: scroll;
+    width: 675px;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #1890FF;
+    border-radius: 100vw;
+}
+
+::-webkit-scrollbar-track{
+    margin-block: 8px;
+    border-radius: 100vw;
+    opacity: 0.5;
+}
+::-webkit-scrollbar-thumb:hover{
+    opacity: 0.5;
+}
+
+.main-context{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.task-name input{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.task-time{
+    font-size: 10px;
+
 }

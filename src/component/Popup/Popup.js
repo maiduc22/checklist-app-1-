@@ -17,7 +17,7 @@ function Popup({trigger, setTrigger, todos, setTodos}) {
         else {
             e.preventDefault();
             let newtodos = [...todos];
-            newtodos.push({id: todos.length+1, title: input, isDone: false, level: select, deadline: hsd});     
+            newtodos.push({title: input, isDone: false, level: select, deadline: hsd, timeLeft: 0});     
             setTodos(newtodos);       
             setInput('');
             setTrigger(false)
@@ -32,6 +32,7 @@ function Popup({trigger, setTrigger, todos, setTodos}) {
     function changeDate(){
         let a = document.getElementById('date-picker')
         setHsd(a.value)
+        console.log(a.value)
     }
     return (
       (trigger) ? (<div className='popup'>
@@ -40,23 +41,23 @@ function Popup({trigger, setTrigger, todos, setTodos}) {
                 <Form className='add-form'>
                 <h1>Add todo</h1>   
                
-                    <Form.Item className='task-input' label="Input">
+                    <Form.Item className='task-input' label="Title">
                         <Input value={input} onChange={(e) => setInput(e.target.value)}/>
                     </Form.Item>
                     <Form.Item  label="Priority Level">
-                        <Select value={select} onChange={handleChange}> 
+                        <Select defaultValue='None' value={select} onChange={handleChange}> 
                             <Select.Option value="Highest">Highest</Select.Option>
                             <Select.Option value="Critical">Critical</Select.Option>
                             <Select.Option value="Alarming">Alarming</Select.Option>
                             <Select.Option value="Low">Low</Select.Option>
                         </Select>
                     </Form.Item>
-                    <Form.Item label="DatePicker">
-                        <DatePicker id='date-picker' format='DD/MM/YYYY' onChange={changeDate}/>
+                    <Form.Item label="Deadline">
+                        <DatePicker id='date-picker' onChange={changeDate}/>
                     </Form.Item>
                     <Form.Item className="btn-container">
-                        <Button className='btn-addtodo' onClick={() => setTrigger(false)}>Cancel</Button>
-                        <Button className='btn-close' onClick={(e) => handleAdd(e)}>Add</Button>
+                        <Button onClick={()=>setTrigger(false)}>Cancel</Button>
+                        <Button type="primary" onClick={(e) => handleAdd(e)}>Save</Button>
                     </Form.Item>
                 </Form>
           </div>

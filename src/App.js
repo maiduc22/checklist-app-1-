@@ -1,23 +1,25 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Search from './component/Search/Search';
 import ToDoList from './component/ToDoList/ToDoList';
-import { Calendar, Row, Col, Button } from 'antd';
+import { Calendar, Row, Col, Button, Tooltip, message } from 'antd';
 import {
-  PlusCircleOutlined
+  PlusCircleOutlined,
+  DeleteOutlined,
+  SearchOutlined
 } from '@ant-design/icons';
 import 'antd/dist/antd.css'
 import Popup from './component/Popup/Popup';
 
 function App() {
-  const [trigger, setTrigger] = useState(false)
-  const [todos, setTodos] = useState([])
+  const [trigger, setTrigger] = useState(false)	
+  const [todos, setTodos] = useState([])		//task list 
+  const [searchInput, setSearchInput] = useState("") 	//search result
+
 
   var storage = JSON.parse(localStorage.getItem("todos"))
   useEffect(()=>{
     setTodos(storage)
   }, [])
-
   useEffect(()=>{
     localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
@@ -25,43 +27,73 @@ function App() {
   return (
     <div className='app-container'>
       <div className='app-wrapper'>
-        <div className='header'>
+        <div className='title'>
           <h1>CHECKLIST APP</h1>
-        </div>
-        <div>
-          <Row style={{height:'50px', padding:'10px'}} align='middle'>
-            <Col span={10}>
-              <Button type="primary" onClick={()=>setTrigger(true)}>
-                Add<PlusCircleOutlined />
-              </Button>
+        </div >
+        
+          <Row className='row-header'>
+            <Col span={8}>
+              	<Button 
+                	className='btn-popup' 
+                	type="primary" 
+                	onClick={()=>setTrigger(true)}
+              	>
+                	Add <PlusCircleOutlined />
+              	</Button>
+              	<Button 
+                	className='btn-reset' 
+                	type="primary" 
+                	onClick={()=>setTodos([])}
+              	>
+               	Reset <DeleteOutlined />
+              	</Button>
             </Col>
             <Col span={4}></Col>
-            <Col span={10}><Search></Search></Col>
+            <Col span={12} style={{textAlign: 'right'}}>
+              <input
+                style={{
+                  margin: '0 10px 0 0',
+                  width: '220px',
+                  border: 'none',
+                  fontSize: '18px',
+                  padding: '5px',
+                  background: '#FFFFFF'
+                }}
+                type="text"
+                placeholder='Input title to search'
+                value={searchInput}
+                onChange = {(e) => setSearchInput(e.target.value)}	
+              ></input>
+
+              <Button 
+              	type="primary" 
+             		shape="circle" 
+              	icon={<SearchOutlined />}               	
+              />
+            </Col>
           </Row>
-          
-        </div>
-        <div>
-            <Row className='Row'>
-              <Col  span={1}></Col>
-              <Col  span={5}>Date</Col>
-              <Col  span={10}>Title</Col>
-              <Col  span={4}>Priority Level</Col>
-              <Col  span={4}>Action</Col>
-            </Row>
-            <hr></hr>
-        </div>
-        
-        <div>
-          <ToDoList todos={todos} setTodos={setTodos}></ToDoList>
-        </div>
+		
+          <div>
+            <ToDoList 
+              todos={todos} 
+              setTodos={setTodos} 
+              input={searchInput} 
+              setInput={setSearchInput}>    
+            </ToDoList>
+          </div>
+
       </div>
+
+      <div className='small-calendar'>
+        <Calendar fullscreen={false}></Calendar>
+      </div>
+
       <Popup 
             trigger={trigger} 
             setTrigger={setTrigger}
             todos={todos}
             setTodos={setTodos}
-          ></Popup>
-      <div><Calendar></Calendar></div>
+      ></Popup>  
     </div>
     
   )

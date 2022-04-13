@@ -12,12 +12,7 @@ function handleSearch(){
 function Search({search, setSearch, input, setInput, todos, setTodos}) {
     return (
         <div className='search'>
-            <Search
-                placeholder="input search text"
-                enterButton="Search"
-                size="large"
-                onSearch={handleSearch}
-            />
+            asdasd
         </div>
     )
 }
