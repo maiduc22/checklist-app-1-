@@ -13,9 +13,10 @@ import {
 
 
 function ToDoList({todos, setTodos, input, setInput}){
-    function handleDelete(index){
-        let newtodos = [...todos];
-        newtodos.splice(index, 1);
+    function handleDelete(id){
+        let b = todos.find(item => item.id == id)
+        console.log(b)
+        let newtodos = todos.filter(item => item.id != id)
         setTodos(newtodos);
         message.warning("You deleted a task!")
     }
@@ -25,31 +26,21 @@ function ToDoList({todos, setTodos, input, setInput}){
         if (e.target.value == '') {handleDelete(index)}
         setTodos(newarr);           
     }
-    function handleDone(index){
-        let a = document.getElementsByClassName("row-input")[index];
-        if (!todos[index].isDone){
-            todos[index].isDone = true;
-
-            a.style.opacity = "0.25";
-            message.success("You've finished a task")
+    function handleDone(id){
+        let a = document.getElementsByClassName(`row-input-${id}`)[0];
+        let b = todos.find(item => item.id == id)
+        if (!b.isDone){
+            b.isDone = true;
+            a.style.opacity = 0.2;
+            message.success("You finished a task!")
         }
         else{
-            todos[index].isDone = false;
-            a.style.textDecoration = "none";
-            a.style.opacity = "1";
-        }
+            b.isDone = false;
+            a.style.opacity = 1;
+        } 
         console.log(todos)
     }
-    // function Calculate(index) {
-    //     let dateString = todos[index].deadline
-    //     let deadline = new Date(dateString)
-    //     let a = new Date()
-    //     let today = new Date(a.toLocaleDateString())
-    //     let diff_time = -today.getTime() + deadline.getTime()
-    //     let diff_day = Math.ceil(diff_time / (1000 * 60 * 60 * 24))
-    //     console.log(diff_day)
-    // }
-    
+
     const filter = todos.filter((todo) => {
         if (input === '') return todo
         else return todo.title.includes(input)
@@ -58,11 +49,11 @@ function ToDoList({todos, setTodos, input, setInput}){
     return (
         <div className="todo-list-wrapper">
             {
-                filter.map((todo, index) => (
-                    <li key={index}>
-                        <Row  className='row-input' >
+                filter.map((todo) => (
+                    <li key={todo.id}>
+                        <Row id="list" className ={`row-input-${todo.id}`} >
                             <Col span={1}><div className={`label-${todo.level}`}></div></Col>
-                            <Col span={15}>
+                            <Col span={10}>
                                 <div className="main-context">
                                     <div className="task-name">
                                         <input
@@ -70,7 +61,7 @@ function ToDoList({todos, setTodos, input, setInput}){
                                             onClick={(e) => e.preventDefault()}
                                             className= "todo"
                                             value={todo.title}
-                                            onChange={(e) => handleChange(e, index)}
+                                            onChange={(e) => handleChange(e, todo.id)}
                                         ></input>
                                     </div>
                                     <div className="task-time">
@@ -79,14 +70,15 @@ function ToDoList({todos, setTodos, input, setInput}){
                                     </div>
                                 </div>                      
                             </Col>
+                            <Col span={5}></Col>
                             <Col span={4}>
                                 <Level level={todo.level}></Level>
                             </Col>
                             <Col span={4}>
-                                <button className="btn-done" onClick={() => handleDone(index)}>
+                                <button className="btn-done" onClick={() => handleDone(todo.id)}>
                                     <CheckOutlined style={{color: '#4D77FF'}}/>
                                 </button>
-                                <button className="btn-delete" onClick={()=> handleDelete(index)}>
+                                <button className="btn-delete" onClick={()=> handleDelete(todo.id)}>
                                     <DeleteOutlined style={{color: '#FD5D5D'}} />
                                 </button>
                             </Col>

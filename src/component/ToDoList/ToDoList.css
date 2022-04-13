@@ -2,7 +2,7 @@ li {
     list-style: none;
 }
 
-.row-input{
+#list{
     background-color: white;
     border-radius: 5px ;
     margin: 5px;
@@ -46,11 +46,11 @@ li {
 }
 
 
-.row-input input{
+#list input{
     border: none;
 }
 
-.row-input input:focus{
+#list input:focus{
     outline: none;
 }
 

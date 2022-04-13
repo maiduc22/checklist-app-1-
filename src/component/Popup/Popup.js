@@ -1,5 +1,6 @@
 import { Input } from 'antd'
 import React, { useState } from 'react'
+import { v4 as uuid } from 'uuid';
 import {message} from "antd";
 import { Form, Select, DatePicker, Button} from 'antd'
 import 'antd/dist/antd.css'
@@ -7,8 +8,10 @@ import "./Popup.css"
 
 function Popup({trigger, setTrigger, todos, setTodos}) {
     const [select, setSelect] = useState()  //priority level
-    const [hsd, setHsd] = useState()        //date
+    const [hsd, setHsd] = useState()        //deadline
     const [input, setInput] = useState('')
+    const [timeleft, setTimeleft] = useState(0)
+
     function handleAdd(e){
         if (!input) {
             e.preventDefault();
@@ -17,7 +20,7 @@ function Popup({trigger, setTrigger, todos, setTodos}) {
         else {
             e.preventDefault();
             let newtodos = [...todos];
-            newtodos.push({title: input, isDone: false, level: select, deadline: hsd, timeLeft: 0});     
+            newtodos.push({id:uuid() ,title: input, isDone: false, level: select, deadline: hsd, timeLeft: timeleft});     
             setTodos(newtodos);       
             setInput('');
             setTrigger(false)
@@ -29,16 +32,32 @@ function Popup({trigger, setTrigger, todos, setTodos}) {
         console.log(`selected: ${value}`)
         setSelect(value);
     }
-    function changeDate(){
-        let a = document.getElementById('date-picker')
-        setHsd(a.value)
-        console.log(a.value)
+    function Calculate(dateString) {
+        let deadline = new Date(dateString)
+        let a = new Date()
+        let today = new Date(a.toLocaleDateString())
+        let diff_time = -today.getTime() + deadline.getTime()
+        let diff_day = Math.ceil(diff_time / (1000 * 60 * 60 * 24))
+        return diff_day-1
+    }
+    function changeDate(date, dateString){
+        setHsd(dateString)
+        setTimeleft(Calculate(dateString))
+        console.log(Calculate(dateString))
+    }
+    
+    const handlePress = e => {
+        if (e.keyCode === 13) {
+            handleAdd(e);
+            console.log('Enter enter')
+        }
+        if (e.keyCode === 27) setTrigger(false);
     }
     return (
       (trigger) ? (<div className='popup'>
           <div className='popup-container'>
               
-                <Form className='add-form'>
+                <Form className='add-form' onFinish={handlePress}>
                 <h1>Add todo</h1>   
                
                     <Form.Item className='task-input' label="Title">
@@ -53,7 +72,7 @@ function Popup({trigger, setTrigger, todos, setTodos}) {
                         </Select>
                     </Form.Item>
                     <Form.Item label="Deadline">
-                        <DatePicker id='date-picker' onChange={changeDate}/>
+                        <DatePicker onChange={changeDate}/>
                     </Form.Item>
                     <Form.Item className="btn-container">
                         <Button onClick={()=>setTrigger(false)}>Cancel</Button>
