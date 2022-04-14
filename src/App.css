@@ -14,6 +14,8 @@
     width: 100%;
     display: flex;
     padding: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .app-wrapper{
@@ -33,14 +35,6 @@
     ;
 }
 
-.Row{
-    border-radius: 2px;
-    margin: 5px;
-    padding: 0px;
-    height: 40px;
-    align-items: center;
-    text-align: center;
-}
 
 .btn-popup, .btn-reset{
     margin-left: 5px;
@@ -49,7 +43,6 @@
 
 .small-calendar{
     height: fit-content;
-
     border: none;
     border-radius: 0px;
     box-shadow: 3px 3px #E2E4E5;
@@ -61,15 +54,11 @@
 }
 
 .row-header{
-    background-color: white;
+    background-color: #EFF1F2;
     border-radius: 5px ;
-    margin: 5px;
-    padding: 10px;
     height: 60px;
     align-items: center;
-    text-align: center;
     font-size: 14px;
-    box-shadow: 3px 3px #E2E4E5;
-    margin-bottom: 30px;
+    margin: 0 5px 20px 0px;
 }
 

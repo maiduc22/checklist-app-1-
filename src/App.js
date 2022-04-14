@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import ToDoList from './component/ToDoList/ToDoList';
-import { Calendar, Row, Col, Button, Tooltip, message } from 'antd';
+import { Row, Col, Button } from 'antd';
 import {
   PlusCircleOutlined,
   DeleteOutlined,
-  SearchOutlined
+  SearchOutlined,
+  CheckCircleFilled
 } from '@ant-design/icons';
 import 'antd/dist/antd.css'
 import Popup from './component/Popup/Popup';
@@ -28,7 +29,7 @@ function App() {
     <div className='app-container'>
       <div className='app-wrapper'>
         <div className='title'>
-          <h1>CHECKLIST APP</h1>
+          <h1>CHECKLIST APP <CheckCircleFilled /></h1>
         </div >
         
           <Row className='row-header'>
@@ -50,6 +51,7 @@ function App() {
             </Col>
             <Col span={4}></Col>
             <Col span={12} style={{textAlign: 'right'}}>
+              <SearchOutlined style={{fontSize: '16px'}}></SearchOutlined>
               <input
                 style={{
                   margin: '0 10px 0 0',
@@ -57,19 +59,14 @@ function App() {
                   border: 'none',
                   fontSize: '18px',
                   padding: '5px',
-                  background: '#FFFFFF'
+                  background: '#EFF1F2'
                 }}
-                type="text"
-                placeholder='Input title to search'
+                
+                placeholder={`Type to search`}
                 value={searchInput}
                 onChange = {(e) => setSearchInput(e.target.value)}	
+                
               ></input>
-
-              <Button 
-              	type="primary" 
-             		shape="circle" 
-              	icon={<SearchOutlined />}               	
-              />
             </Col>
           </Row>
 		
@@ -83,11 +80,6 @@ function App() {
           </div>
 
       </div>
-
-      <div className='small-calendar'>
-        <Calendar fullscreen={false}></Calendar>
-      </div>
-
       <Popup 
             trigger={trigger} 
             setTrigger={setTrigger}

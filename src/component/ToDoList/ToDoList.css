@@ -7,7 +7,7 @@ li {
     border-radius: 5px ;
     margin: 5px;
     padding: 0px;
-    height: 50px;
+    height: 65px;
     align-items: center;
     text-align: center;
     font-size: 14px;
@@ -17,24 +17,24 @@ li {
 .label-Highest{
     background-color: #FFA8A8;
     width: 10px;
-    height: 50px;
+    height: 65px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Critical{
     background-color: #FDD7AA;
     width: 10px;
-    height: 50px;
+    height: 65px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Alarming{
     background: #F6FFA4;
     width: 10px;
-    height: 50px;
+    height: 65px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Low{
     width: 10px;
-    height: 50px;
+    height: 65px;
     background: #B6FFCE;
     border-radius: 5px 0 0 5px; 
 }
@@ -48,6 +48,7 @@ li {
 
 #list input{
     border: none;
+    width: 250px;
 }
 
 #list input:focus{
@@ -91,5 +92,21 @@ li {
 
 .task-time{
     font-size: 10px;
-
 }
+
+.task-false-true{
+    opacity: 1;
+    background: red;
+}
+
+.task-false-false{
+    opacity: 1;
+}
+
+.task-true-false{
+    opacity: 0.2;
+}
+.task-true-true{
+    opacity: 0.2;
+}
+
