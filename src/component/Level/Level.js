@@ -21,7 +21,7 @@ function Level({level}) {
             break;
     }
     return (
-        <Tag color={color}>{level}</Tag>
+        <Tag style={{fontWeight: 'bolder'}}  color={color}>{level}</Tag>
     )
 }
 

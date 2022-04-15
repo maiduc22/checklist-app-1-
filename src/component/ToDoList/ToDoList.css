@@ -49,6 +49,7 @@ li {
 #list input{
     border: none;
     width: 250px;
+    pointer-events: none; 
 }
 
 #list input:focus{
