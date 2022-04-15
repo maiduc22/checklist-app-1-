@@ -10,7 +10,7 @@ import {
     CheckOutlined,
     DeleteOutlined,
 } from '@ant-design/icons';
-import { uuid } from "uuidv4";
+
 
 
 function ToDoList({todos, setTodos, input}){
@@ -53,17 +53,7 @@ function ToDoList({todos, setTodos, input}){
         }
         console.log(todos)
     }
-    function handleDuplicate(id){
-        let newtodos = [...todos]
-        let b = todos.find(item => item.id === id)
-        b.id = uuid()
-        for (var i=0; i<todos.length; i++){
-            if (todos[i].id === id){
-                newtodos.splice(i, 0, b)
-            }
-        }
-        setTodos(newtodos)
-    }
+
 
     var filter = todos.filter((todo) => {
         if (input === '') return todo
@@ -73,8 +63,7 @@ function ToDoList({todos, setTodos, input}){
     function handleDrag(item){
         if (!item.destination) return
         let [drag] = filter.splice(item.source.index, 1)
-        filter.splice(item.destination.index, 0, drag)
-        
+        filter.splice(item.destination.index, 0, drag)    
     }
     return (
         <DragDropContext onDragEnd={handleDrag}>
