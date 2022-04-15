@@ -34,20 +34,18 @@ function App() {
         
           <Row className='row-header'>
             <Col span={8}>
-              	<Button 
+              	<button 
                 	className='btn-popup' 
-                	type="primary" 
                 	onClick={()=>setTrigger(true)}
               	>
                 	Add <PlusCircleOutlined />
-              	</Button>
-              	<Button 
+              	</button>
+              	<button 
                 	className='btn-reset' 
-                	type="primary" 
                 	onClick={()=>setTodos([])}
               	>
-               	Reset <DeleteOutlined />
-              	</Button>
+               	Clear <DeleteOutlined />
+              	</button>
             </Col>
             <Col span={4}></Col>
             <Col span={12} style={{textAlign: 'right'}}>
@@ -61,11 +59,9 @@ function App() {
                   padding: '5px',
                   background: '#EFF1F2'
                 }}
-                
                 placeholder={`Type to search`}
                 value={searchInput}
                 onChange = {(e) => setSearchInput(e.target.value)}	
-                
               ></input>
             </Col>
           </Row>

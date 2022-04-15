@@ -40,9 +40,9 @@ function Popup({trigger, setTrigger, todos, setTodos}) {
         let diff_day = Math.ceil(diff_time / (1000 * 60 * 60 * 24))
         return diff_day-1
     }
-    function changeDate(date, dateString){
+    function handleChangeDate(date, dateString){
         setHsd(dateString)
-        setTimeleft(Calculate(dateString))
+        setInterval(setTimeleft(Calculate(dateString)), 1000*24*60*60)
         console.log(Calculate(dateString))
     }
     
@@ -72,7 +72,7 @@ function Popup({trigger, setTrigger, todos, setTodos}) {
                         </Select>
                     </Form.Item>
                     <Form.Item label="Deadline">
-                        <DatePicker onChange={changeDate}/>
+                        <DatePicker onChange={handleChangeDate}/>
                     </Form.Item>
                     <Form.Item className="btn-container">
                         <Button onClick={()=>setTrigger(false)}>Cancel</Button>
