@@ -12,7 +12,6 @@ import 'antd/dist/antd.css'
 import Popup from './component/Popup/Popup';
 
 function App() {
-  const [trigger, setTrigger] = useState(false)	
   const [todos, setTodos] = useState([])		//task list 
   const [searchInput, setSearchInput] = useState("") 	//search result
 
@@ -34,18 +33,7 @@ function App() {
         
           <Row className='row-header'>
             <Col span={8}>
-              	<button 
-                	className='btn-popup' 
-                	onClick={()=>setTrigger(true)}
-              	>
-                	Add <PlusCircleOutlined />
-              	</button>
-              	<button 
-                	className='btn-reset' 
-                	onClick={()=>setTodos([])}
-              	>
-               	Clear <DeleteOutlined />
-              	</button>
+              <Popup></Popup>
             </Col>
             <Col span={4}></Col>
             <Col span={12} style={{textAlign: 'right'}}>
@@ -76,12 +64,6 @@ function App() {
           </div>
 
       </div>
-      <Popup 
-            trigger={trigger} 
-            setTrigger={setTrigger}
-            todos={todos}
-            setTodos={setTodos}
-      ></Popup>  
     </div>
     
   )

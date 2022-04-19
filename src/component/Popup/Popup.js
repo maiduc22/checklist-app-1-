@@ -2,7 +2,8 @@ import { Input } from 'antd'
 import React, { useState } from 'react'
 import { v4 as uuid } from 'uuid';
 import {message} from "antd";
-import { Form, Select, DatePicker, Button} from 'antd'
+import { Form, Select, DatePicker, Button, Modal} from 'antd'
+import { PlusSquareOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css'
 import "./Popup.css"
 
@@ -46,42 +47,54 @@ function Popup({trigger, setTrigger, todos, setTodos}) {
         console.log(Calculate(dateString))
     }
     
-    const handlePress = e => {
-        if (e.keyCode === 13) {
-            handleAdd(e);
-            console.log('Enter enter')
-        }
-        if (e.keyCode === 27) setTrigger(false);
-    }
+    const [isModalVisible, setIsModalVisible] = useState(false);
+      
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+      
+    const handleOk = () => {
+        setIsModalVisible(false);
+    };
+      
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
     return (
-      (trigger) ? (<div className='popup'>
-          <div className='popup-container'>
-              
-                <Form className='add-form' onFinish={handlePress}>
-                <h1>Add todo</h1>   
-               
-                    <Form.Item className='task-input' label="Title">
-                        <Input value={input} onChange={(e) => setInput(e.target.value)}/>
-                    </Form.Item>
-                    <Form.Item  label="Priority Level">
-                        <Select defaultValue='None' value={select} onChange={handleChange}> 
-                            <Select.Option value="Highest">Highest</Select.Option>
-                            <Select.Option value="Critical">Critical</Select.Option>
-                            <Select.Option value="Alarming">Alarming</Select.Option>
-                            <Select.Option value="Low">Low</Select.Option>
-                        </Select>
-                    </Form.Item>
-                    <Form.Item label="Deadline">
-                        <DatePicker onChange={handleChangeDate}/>
-                    </Form.Item>
-                    <Form.Item className="btn-container">
-                        <Button onClick={()=>setTrigger(false)}>Cancel</Button>
-                        <Button type="primary" onClick={(e) => handleAdd(e)}>Save</Button>
-                    </Form.Item>
-                </Form>
-          </div>
-      </div>) : ""
-  )
-}
-
+        <>
+            <Button 
+                type="primary" 
+                onClick={showModal} 
+                icon={<PlusSquareOutlined />} 
+                shape="circle"
+            >
+            </Button>
+            <Modal title='Edit Task' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                <div>
+                    <Form 
+                        className='edit-form'
+                        labelCol={{span: 6}}
+                        wrapperCol={{span: 18}}
+                    >
+                        <Form.Item className='task-input' label="Title">
+                            <Input value={input} onChange={(e) => setInput(e.target.value)}/>
+                        </Form.Item>
+                        <Form.Item  label="Priority Level">
+                            <Select defaultValue='None'> 
+                                <Select.Option value="Highest">Highest</Select.Option>
+                                <Select.Option value="Critical">Critical</Select.Option>
+                                <Select.Option value="Alarming">Alarming</Select.Option>
+                                <Select.Option value="Low">Low</Select.Option>
+                            </Select>
+                        </Form.Item>
+                        <Form.Item label="Deadline">
+                            <DatePicker />
+                        </Form.Item>
+                    </Form>
+                </div>
+      
+            </Modal>
+        </>
+        )
+      }
 export default Popup

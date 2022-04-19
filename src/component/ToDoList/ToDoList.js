@@ -11,7 +11,7 @@ import {
     DeleteOutlined,
 } from '@ant-design/icons';
 
-
+import EditModal from "../EditModal/EditModal";
 
 function ToDoList({todos, setTodos, input}){
 
@@ -91,13 +91,13 @@ function ToDoList({todos, setTodos, input}){
                                                                 ></input>
                                                             </div>
                                                             <div className="btn">
-                                                                
                                                                 <button className="btn-done" onClick={() => handleDone(todo.id)}>
                                                                     <CheckOutlined style={{color: '#4D77FF'}}/>
                                                                 </button>
                                                                 <button className="btn-delete" onClick={()=> handleDelete(todo.id)}>
                                                                     <DeleteOutlined style={{color: '#FD5D5D'}} />
                                                                 </button>
+                                                                <EditModal></EditModal>
                                                             </div>
                                                         </div>                      
                                                     </Col>

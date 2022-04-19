@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import { Modal, Button } from 'antd';
+import { Modal, Button, Form, Select, DatePicker, Input  } from 'antd';
+import { EditOutlined } from '@ant-design/icons';
 
 const EditModal = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -17,18 +18,28 @@ const EditModal = () => {
     setIsModalVisible(false);
   };
 
+  const [input, setInput] = useState('')
   return (
     <>
-        <Button type="primary" onClick={showModal} icon={<EditOutlined />} shape="circle">
+        <Button 
+            type="primary" 
+            onClick={showModal} 
+            icon={<EditOutlined />} 
+            shape="circle"
+        >
         </Button>
         <Modal title='Edit Task' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-            <div className='popup-container'>
-                <Form className='edit-form'>
+            <div>
+                <Form 
+                    className='edit-form'
+                    labelCol={{span: 6}}
+                    wrapperCol={{span: 18}}
+                >
                     <Form.Item className='task-input' label="Title">
                         <Input value={input} onChange={(e) => setInput(e.target.value)}/>
                     </Form.Item>
                     <Form.Item  label="Priority Level">
-                        <Select defaultValue='None' value={select} onChange={handleChange}> 
+                        <Select defaultValue='None'> 
                             <Select.Option value="Highest">Highest</Select.Option>
                             <Select.Option value="Critical">Critical</Select.Option>
                             <Select.Option value="Alarming">Alarming</Select.Option>
@@ -36,11 +47,7 @@ const EditModal = () => {
                         </Select>
                     </Form.Item>
                     <Form.Item label="Deadline">
-                        <DatePicker onChange={handleChangeDate}/>
-                    </Form.Item>
-                    <Form.Item className="btn-container">
-                        <Button onClick={()=>setTrigger(false)}>Cancel</Button>
-                        <Button type="primary" onClick={(e) => handleAdd(e)}>Save</Button>
+                        <DatePicker />
                     </Form.Item>
                 </Form>
             </div>
