@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './App.css';
 import ToDoList from './component/ToDoList/ToDoList';
 import { Row, Col} from 'antd';
@@ -11,7 +12,10 @@ import AddModal from './component/AddModal/AddModal';
 
 function App() {
 
-  const [searchInput, setSearchInput] = useState("") 	//search result
+  const todos = useSelector(state => state.todos)
+  console.log(todos)
+
+  const [searchInput, setSearchInput] = useState("") 	//search input
   return (
     <div className='app-container'>
       <div className='app-wrapper'>

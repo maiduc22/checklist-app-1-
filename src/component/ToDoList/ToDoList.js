@@ -17,7 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 function ToDoList({search}){
 
-    const todos = useSelector(state => state)
+    const todos = useSelector(state => state.todos)
+    console.log(todos)
     const dispatch = useDispatch()
     var filter = todos.filter((todo) => {
         if (search === '') return todo

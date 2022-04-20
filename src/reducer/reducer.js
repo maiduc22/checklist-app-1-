@@ -1,49 +1,82 @@
+const initialState = {
+    todos: [], 
+}
 
-
-const reducerFn = (state = [], action) => {
+const reducerFn = (state = initialState, action) => {
     switch (action.type){
         case "Add":
-            return [...state, 
-                {
-                    id: action.id, 
-                    title: action.title,
-                    isDone: false,
-                    level: action.level,
-                    deadline: action.deadline,
-                }]
+            const temp = [...state.todos, {
+                id: action.id, 
+                title: action.title,
+                isDone: false,
+                level: action.level,
+                deadline: action.deadline,
+            }]
+            return{
+                ...state, 
+                todos: temp
+            }
         case "Finish":{
-            return state.map( todo => {
-                if(todo.id !== action.id) return todo
+            const temp = state.todos.map(todo => {
+                if (todo.id !== action.id) return todo
                 else return {...todo, isDone: !todo.isDone}
             })
+            return {
+                ...state,
+                todos: temp
+            }
         }
         case "Delete":{
-            return state.filter(todo => todo.id !== action.id)
+            const temp = state.todos.filter(todo => todo.id !== action.id)
+            return {
+                ...state,
+                todos: temp
+            }
         }
         case "Clear":{
-            console.log("Clear All")
-            return []
+            return {
+                ...state,
+                todos: []
+            }
         }
         case "Edit_Title":{
-            return state.map(todo => {
+            const temp =  state.todos.map(todo => {
                 if(todo.id !== action.id) return todo
                 else {
                     // console.log(action.title)
                     return {...todo, title: action.newtitle}
                 }
             })
+            return {
+                ...state,
+                todos: temp
+            }
         }
         case "Edit_Level":{
-            return state.map(todo => {
+            const temp =  state.todos.map(todo => {
                 if(todo.id !== action.id) return todo
-                else return {...todo, level: action.newlevel}
+                else {
+                    // console.log(action.title)
+                    return {...todo, level: action.newlevel}
+                }
             })
+            return {
+                ...state,
+                todos: temp
+            }
         }
         case "Edit_Deadline":{
-            return state.map(todo => {
+            const temp =  state.todos.map(todo => {
                 if(todo.id !== action.id) return todo
-                else return {...todo, deadline: action.newdeadline}
+                else {
+                    // console.log(action.title)
+                    return {...todo, deadline: action.newdeadline}
+                }
             })
+            return {
+                ...state,
+                todos: temp
+            }
         }
 
         default:
