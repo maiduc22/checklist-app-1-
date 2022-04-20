@@ -29,8 +29,6 @@ function ToDoList({search}){
             type: 'Delete',
             id: id
         })
-        console.log(todos)
-        console.log(filter)
         message.warning("You deleted a task")
     }
 
@@ -40,7 +38,6 @@ function ToDoList({search}){
             id
         })
         message.success("You finished a task")
-        console.log(todos)
     }
 
     function handleDrag(item){
@@ -83,7 +80,7 @@ function ToDoList({search}){
                                                         <Level level={todo.level}></Level>
                                                     </Col>
                                                     <Col span={4}>
-                                                        <TImeleft deadline={todo.deadline} timeLeft={todo.timeLeft}></TImeleft>
+                                                        <TImeleft deadline={todo.deadline}></TImeleft>
                                                     </Col>
                                                 </Row>
                                             </div>

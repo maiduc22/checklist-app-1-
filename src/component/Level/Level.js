@@ -6,16 +6,16 @@ function Level({level}) {
     let color
     switch (level) {
         case 'Highest':
-            color = '#FFA8A8'
+            color = '#E64F3B'
             break;
         case 'Critical':
-            color = '#FDD7AA'
+            color = '#FE9319'
             break;
         case 'Alarming':
-            color = '#F6FFA4'
+            color = '#EFD000'
             break;
         case 'Low':
-            color = '#B6FFCE'
+            color = '#54B445'
             break;
         default:
             break;

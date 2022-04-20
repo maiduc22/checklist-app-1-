@@ -10,15 +10,14 @@ import { useDispatch} from 'react-redux';
 
 
 function AddModal() {
-    const [select, setSelect] = useState()  //priority level
-    const [hsd, setHsd] = useState()        //deadline
-    const [input, setInput] = useState('');
+    const [level, setLevel] = useState()  //priority level
+    const [deadline, setDeadline] = useState()        //deadline
+    const [title, setTitle] = useState('');
     const dispatch = useDispatch();
     
 
-    function handleSelectTag(value){
-        console.log(`selected: ${value}`)
-        setSelect(value);
+    function handleSelectTag(value){    
+        setLevel(value);
     }
     // function Calculate(dateString) {
     //     let deadline = new Date(dateString)
@@ -29,7 +28,7 @@ function AddModal() {
     //     return diff_day-1
     // }
     function handleSelectDate(date, dateString){
-        setHsd(dateString)
+        setDeadline(dateString)
     }
     
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -43,11 +42,13 @@ function AddModal() {
         dispatch({
             type: 'Add',
             id : uuid(),
-            title: input,
+            title: title,
             idDone: false,
-            level: select,
-            deadline: hsd
+            level: level,
+            deadline: deadline
         })
+        
+        setTitle('')
         message.success("You added a task!")
     };
       
@@ -55,12 +56,13 @@ function AddModal() {
         setIsModalVisible(false);
     };
     return (
-        <>
+        <div className='add-modal'>
             <Button 
                 type="primary" 
                 onClick={showModal} 
                 icon={<PlusSquareOutlined />} 
                 shape="round"
+                className='btn-add-modal'
             >
                 Add Task
             </Button>
@@ -71,11 +73,20 @@ function AddModal() {
                         labelCol={{span: 6}}
                         wrapperCol={{span: 18}}
                     >
-                        <Form.Item className='task-input' label="Title">
-                            <Input value={input} onChange={(e) => setInput(e.target.value)}/>
+                        <Form.Item 
+                            className='task-input' 
+                            label="Title"
+                            rules={[
+                                {
+                                  required: true,
+                                  message: 'Please input your username!',
+                                },
+                            ]}
+                        >
+                            <Input value={title} onChange={(e) => setTitle(e.target.value)}/>
                         </Form.Item>
                         <Form.Item  label="Priority Level">
-                            <Select defaultValue='None' onChange={handleSelectTag}> 
+                            <Select onChange={handleSelectTag}> 
                                 <Select.Option value="Highest">Highest</Select.Option>
                                 <Select.Option value="Critical">Critical</Select.Option>
                                 <Select.Option value="Alarming">Alarming</Select.Option>
@@ -89,7 +100,7 @@ function AddModal() {
                 </div>
       
             </Modal>
-        </>
+        </div>
         )
       }
 export default AddModal

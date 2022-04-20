@@ -6,23 +6,14 @@ import {
 } from '@ant-design/icons';
 import moment from "moment";
 
-function TImeleft({deadline, timeLeft}) {
-  if (timeLeft >= 0){
+function TImeleft({deadline}) {
       return (
         <div className='time-dis'>
-                <CalendarOutlined  style={{marginRight: '5px'}}/>
+                <CalendarOutlined  style={{marginRight: '6px'}}/>
                 {moment(deadline).format('DD MMM, YYYY')}
         </div>
       )
-  }
-  else {
-        return (
-            <div className='time-dis' style={{color: 'red'}}>
-                    <CalendarOutlined  style={{marginRight: '5px'}}/>
-                    {moment(deadline).format('DD MMM YYYY')}
-            </div>
-        )
-  }
+  
 }
 
 export default TImeleft

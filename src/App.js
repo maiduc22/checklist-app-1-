@@ -34,6 +34,7 @@ function App() {
                   fontSize: '18px',
                   padding: '5px',
                   background: '#EFF1F2'
+                  
                 }}
                 placeholder={`Type to search`}
                 value={searchInput}

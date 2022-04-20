@@ -5,9 +5,10 @@ li {
 #list{
     background-color: white;
     border-radius: 5px ;
-    margin: 5px;
+    margin: 10px;
     padding: 0px;
     height: 65px;
+    width: 650px;
     align-items: center;
     text-align: center;
     font-size: 14px;
@@ -15,19 +16,19 @@ li {
 }
 
 .label-Highest{
-    background-color: #FFA8A8;
+    background-color: #E64F3B;
     width: 10px;
     height: 65px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Critical{
-    background-color: #FDD7AA;
+    background-color: #FE9319;
     width: 10px;
     height: 65px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Alarming{
-    background: #F6FFA4;
+    background: #EFD000;
     width: 10px;
     height: 65px;
     border-radius: 5px 0 0 5px; 
@@ -35,7 +36,7 @@ li {
 .label-Low{
     width: 10px;
     height: 65px;
-    background: #B6FFCE;
+    background: #54B445;
     border-radius: 5px 0 0 5px; 
 }
 
@@ -49,10 +50,10 @@ li {
     font-size: larger;
     font-weight: bolder;
 }
-.todo-list-wrapper{
-    height: 365px;
+.tasklist{
+    height: 320px;
     overflow-y: scroll;
-    width: 675px;
+    width: 670px;
 }
 
 ::-webkit-scrollbar{
@@ -60,14 +61,14 @@ li {
 }
 
 ::-webkit-scrollbar-thumb{
-    background-color: #9ADCFF;
+    background-color: #035397;
     border-radius: 100vw;
 }
 
 ::-webkit-scrollbar-track{
     margin-block: 8px;
     border-radius: 100vw;
-    opacity: 0.5;
+    opacity: 1;
 }
 ::-webkit-scrollbar-thumb:hover{
     opacity: 0.5;
