@@ -7,24 +7,35 @@ const addtask = (task) => {
         isDone: task.isDone,
         level: task.level,
         deadline: task.deadline,
-        timeLeft: task.timeLeft
     }
 }
 
 const finishTask = (id) => {
     return{
         type: "Finish",
-        payload: id
+        id
     }
 }
 
-const deleteTask = () => {
+const deleteTask = (id) => {
     return{
         type: 'Delete',
-        payload: id
+        id
     }
 }
 
+const clearAll = () => {
+    return {
+        type: 'Clear'
+    }
+}
+
+const editTask = (id) =>{
+    return{
+        type: 'Edit',
+        id
+    }
+}
 export default {
-    addtask, finishTask, deleteTask
+    addtask, finishTask, deleteTask, clearAll, editTask
 }

@@ -1,23 +1,19 @@
-import { v4 as uuid } from 'uuid';
 
-let todos = [
-    {id:uuid() ,title: 'uong nuoc', isDone: false, level: 'Low', deadline: "4/16/2022", timeLeft: 1}
-]
-const reducerFn = (state = todos, action) => {
+
+const reducerFn = (state = [], action) => {
     switch (action.type){
         case "Add":
             return [...state, 
                 {
                     id: action.id, 
                     title: action.title,
-                    isDone: action.isDone,
+                    isDone: false,
                     level: action.level,
                     deadline: action.deadline,
-                    timeLeft: action.timeLeft
                 }]
         case "Finish":{
             return state.map( todo => {
-                if(todo.id !== action.payload) return todo
+                if(todo.id !== action.id) return todo
                 else return {
                     id: todo.id, 
                     title: todo.title,
@@ -29,7 +25,14 @@ const reducerFn = (state = todos, action) => {
             })
         }
         case "Delete":{
-            return state.filter(todo => todo.id !== action.payload)
+            return state.filter(todo => todo.id !== action.id)
+        }
+        case "Clear":{
+            console.log("Clear All")
+            return []
+        }
+        case "Edit":{
+            return state
         }
         default:
             return state

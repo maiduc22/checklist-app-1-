@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import { Modal, Button, Form, Select, DatePicker, Input  } from 'antd';
+import { Modal, Form, Select, DatePicker, Input  } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 
 const EditModal = () => {
@@ -21,13 +21,13 @@ const EditModal = () => {
   const [input, setInput] = useState('')
   return (
     <>
-        <Button 
-            type="primary" 
-            onClick={showModal} 
-            icon={<EditOutlined />} 
-            shape="circle"
+        <button 
+          className='btn-edit' 
+          style={{color: 'green'}}
+          onClick={showModal}
         >
-        </Button>
+          <EditOutlined />
+        </button>
         <Modal title='Edit Task' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
             <div>
                 <Form 

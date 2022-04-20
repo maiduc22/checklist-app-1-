@@ -3,27 +3,30 @@ import './App.css';
 import ToDoList from './component/ToDoList/ToDoList';
 import { Row, Col, Button } from 'antd';
 import {
-  PlusCircleOutlined,
-  DeleteOutlined,
   SearchOutlined,
   CheckCircleFilled
 } from '@ant-design/icons';
 import 'antd/dist/antd.css'
 import Popup from './component/Popup/Popup';
 
+import { useSelector } from 'react-redux';
+
 function App() {
-  const [todos, setTodos] = useState([])		//task list 
+  // const [todos, setTodos] = useState([])		//task list 
+  
+
+
+  // var storage = JSON.parse(localStorage.getItem("todos"))
+  
+  // useEffect(()=>{
+  //   setTodos(storage)
+  // }, [])
+  // useEffect(()=>{
+  //   localStorage.setItem("todos", JSON.stringify(todos))
+  // }, [todos])
+
+  
   const [searchInput, setSearchInput] = useState("") 	//search result
-
-
-  var storage = JSON.parse(localStorage.getItem("todos"))
-  useEffect(()=>{
-    setTodos(storage)
-  }, [])
-  useEffect(()=>{
-    localStorage.setItem("todos", JSON.stringify(todos))
-  }, [todos])
-
   return (
     <div className='app-container'>
       <div className='app-wrapper'>
@@ -56,10 +59,8 @@ function App() {
 		
           <div>
             <ToDoList 
-              todos={todos} 
-              setTodos={setTodos} 
-              input={searchInput} 
-              setInput={setSearchInput}>    
+              search={searchInput}
+            >    
             </ToDoList>
           </div>
 

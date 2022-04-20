@@ -10,55 +10,73 @@ import {
     CheckOutlined,
     DeleteOutlined,
 } from '@ant-design/icons';
-
 import EditModal from "../EditModal/EditModal";
 
-function ToDoList({todos, setTodos, input}){
+import { useDispatch, useSelector } from "react-redux";
 
-    function handleDelete(id){
-        // let b = todos.find(item => item.id == id)
-        // console.log(b)
-        let newtodos = todos.filter(item => item.id !== id)
-        setTodos(newtodos);
-        message.warning("You deleted a task!")
-    }
-    function handleChange(e, id){
-        let newarr = [...todos];
-        let b = todos.find(item => item.id === id)
-        b.title = e.target.value
-        for (let i=0; i<todos.length; i++){
-            if (todos[i].id === id){
-                newarr.splice(i, 1, b)
-                setTodos(newarr)
-            }
-        }
-        // if (b.title==='') handleDelete(id)
+
+function ToDoList({search}){
+
+    // function handleDelete(id){
+    //     // let b = todos.find(item => item.id == id)
+    //     // console.log(b)
+    //     let newtodos = todos.filter(item => item.id !== id)
+    //     setTodos(newtodos);
+    //     message.warning("You deleted a task!")
+    // }
+    // function handleChange(e, id){
+    //     let newarr = [...todos];
+    //     let b = todos.find(item => item.id === id)
+    //     b.title = e.target.value
+    //     for (let i=0; i<todos.length; i++){
+    //         if (todos[i].id === id){
+    //             newarr.splice(i, 1, b)
+    //             setTodos(newarr)
+    //         }
+    //     }
                   
-    }
-    function handleDone(id){
-        let newarr = [...todos];
-        let b = todos.find(item => item.id === id)
-        if (!b.isDone){
-            b.isDone = true;
-            message.success("You finished a task!")
-        }
-        else{
-            b.isDone = false;
-        } 
-        for (let i=0; i<todos.length; i++){
-            if (todos[i].id === id){
-                newarr.splice(i, 1, b)
-                setTodos(newarr)
-            }
-        }
-        console.log(todos)
-    }
-
-
+    // }
+    // function handleDone(id){
+    //     let newarr = [...todos];
+    //     let b = todos.find(item => item.id === id)
+    //     if (!b.isDone){
+    //         b.isDone = true;
+    //         message.success("You finished a task!")
+    //     }
+    //     else{
+    //         b.isDone = false;
+    //     } 
+    //     for (let i=0; i<todos.length; i++){
+    //         if (todos[i].id === id){
+    //             newarr.splice(i, 1, b)
+    //             setTodos(newarr)
+    //         }
+    //     }
+    //     console.log(todos)
+    // }
+    const todos = useSelector(state => state)
+    const dispatch = useDispatch()
     var filter = todos.filter((todo) => {
-        if (input === '') return todo
-        else return todo.title.includes(input)
+        if (search === '') return todo
+        else return todo.title.includes(search)
     })
+    
+    function handleDelete(id){
+        dispatch({
+            type: 'Delete',
+            id: id
+        })
+        console.log(todos)
+        console.log(filter)
+        message.warning("You deleted a task")
+    }
+
+    function handleFinish(id){
+        dispatch({
+            type: 'Finish',
+            id
+        })
+    }
 
     function handleDrag(item){
         if (!item.destination) return
@@ -77,24 +95,18 @@ function ToDoList({todos, setTodos, input}){
                                     {(provided) => (
                                         <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                             <div className = {`task-${todo.isDone}`}>
-                                                <Row id="list" className ={`row-input-${todo.id}`} >
+                                                <Row id="list" className ={`row-searchInput-${todo.id}`} >
                                                     <Col span={1}><div className={`label-${todo.level}`}></div></Col>
                                                     <Col span={15}>
                                                         <div className="main-context">
                                                             <div className="task-name">
-                                                                <input
-                                                                    type="text"
-                                                                    onClick={(e) => e.preventDefault()}
-                                                                    className= "todo"
-                                                                    value={todo.title}
-                                                                    onChange={(e) => handleChange(e, todo.id)}
-                                                                ></input>
+                                                                {todo.title}
                                                             </div>
                                                             <div className="btn">
-                                                                <button className="btn-done" onClick={() => handleDone(todo.id)}>
+                                                                <button className="btn-finish" onClick={()=> handleFinish(todo.id)}>
                                                                     <CheckOutlined style={{color: '#4D77FF'}}/>
                                                                 </button>
-                                                                <button className="btn-delete" onClick={()=> handleDelete(todo.id)}>
+                                                                <button className="btn-delete" onClick={() => handleDelete(todo.id)}>
                                                                     <DeleteOutlined style={{color: '#FD5D5D'}} />
                                                                 </button>
                                                                 <EditModal></EditModal>

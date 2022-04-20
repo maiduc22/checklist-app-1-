@@ -39,23 +39,16 @@ li {
     border-radius: 5px 0 0 5px; 
 }
 
-.btn-done, .btn-delete{
+.btn-finish, .btn-delete, .btn-edit{
     border: none;
     background: none;
     margin: 5px;
+    font-size: small;
 }
-
-
-#list input{
-    border: none;
-    width: 250px;
-    pointer-events: none; 
+.task-name{
+    font-size: larger;
+    font-weight: bolder;
 }
-
-#list input:focus{
-    outline: none;
-}
-
 .todo-list-wrapper{
     height: 365px;
     overflow-y: scroll;
