@@ -5,11 +5,11 @@ import {message} from "antd";
 import { Form, Select, DatePicker, Button, Modal} from 'antd'
 import { PlusSquareOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css'
-import "./Popup.css"
+import "./AddModal.css"
 import { useDispatch} from 'react-redux';
 
 
-function Popup() {
+function AddModal() {
     const [select, setSelect] = useState()  //priority level
     const [hsd, setHsd] = useState()        //deadline
     const [input, setInput] = useState('');
@@ -92,4 +92,4 @@ function Popup() {
         </>
         )
       }
-export default Popup
+export default AddModal

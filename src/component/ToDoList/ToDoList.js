@@ -17,43 +17,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 function ToDoList({search}){
 
-    // function handleDelete(id){
-    //     // let b = todos.find(item => item.id == id)
-    //     // console.log(b)
-    //     let newtodos = todos.filter(item => item.id !== id)
-    //     setTodos(newtodos);
-    //     message.warning("You deleted a task!")
-    // }
-    // function handleChange(e, id){
-    //     let newarr = [...todos];
-    //     let b = todos.find(item => item.id === id)
-    //     b.title = e.target.value
-    //     for (let i=0; i<todos.length; i++){
-    //         if (todos[i].id === id){
-    //             newarr.splice(i, 1, b)
-    //             setTodos(newarr)
-    //         }
-    //     }
-                  
-    // }
-    // function handleDone(id){
-    //     let newarr = [...todos];
-    //     let b = todos.find(item => item.id === id)
-    //     if (!b.isDone){
-    //         b.isDone = true;
-    //         message.success("You finished a task!")
-    //     }
-    //     else{
-    //         b.isDone = false;
-    //     } 
-    //     for (let i=0; i<todos.length; i++){
-    //         if (todos[i].id === id){
-    //             newarr.splice(i, 1, b)
-    //             setTodos(newarr)
-    //         }
-    //     }
-    //     console.log(todos)
-    // }
     const todos = useSelector(state => state)
     const dispatch = useDispatch()
     var filter = todos.filter((todo) => {
@@ -76,6 +39,8 @@ function ToDoList({search}){
             type: 'Finish',
             id
         })
+        message.success("You finished a task")
+        console.log(todos)
     }
 
     function handleDrag(item){
@@ -109,7 +74,7 @@ function ToDoList({search}){
                                                                 <button className="btn-delete" onClick={() => handleDelete(todo.id)}>
                                                                     <DeleteOutlined style={{color: '#FD5D5D'}} />
                                                                 </button>
-                                                                <EditModal></EditModal>
+                                                                <EditModal id={todo.id}></EditModal>
                                                             </div>
                                                         </div>                      
                                                     </Col>

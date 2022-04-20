@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import { Modal, Form, Select, DatePicker, Input  } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
 
-const EditModal = () => {
+const EditModal = ({id}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const dispatch = useDispatch();
+  const todos = useSelector(state => state)
+  let todo = todos.find(todo => todo.id === id)
+
+  const [newtitle, setTitle] = useState(todo.title)
+  const [newdeadline, setDeadline] = useState(todo.deadline)
+  const [newlevel, setLevel] = useState(todo.level)
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -12,13 +20,29 @@ const EditModal = () => {
 
   const handleOk = () => {
     setIsModalVisible(false);
+    dispatch({
+      type: "Edit_Title",
+      id,
+      newtitle
+    })
+
+    dispatch({
+      type: "Edit_Level",
+      id,
+      newlevel
+    })
+
+    dispatch({
+      type: "Edit_Deadline",
+      id,
+      newdeadline
+    })
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
-  const [input, setInput] = useState('')
   return (
     <>
         <button 
@@ -36,10 +60,10 @@ const EditModal = () => {
                     wrapperCol={{span: 18}}
                 >
                     <Form.Item className='task-input' label="Title">
-                        <Input value={input} onChange={(e) => setInput(e.target.value)}/>
+                        <Input type='text' value={newtitle} onChange={(e) => setTitle(e.target.value)}/>
                     </Form.Item>
                     <Form.Item  label="Priority Level">
-                        <Select defaultValue='None'> 
+                        <Select defaultValue={newlevel} onChange={(value) => setLevel(value)}> 
                             <Select.Option value="Highest">Highest</Select.Option>
                             <Select.Option value="Critical">Critical</Select.Option>
                             <Select.Option value="Alarming">Alarming</Select.Option>
@@ -47,7 +71,7 @@ const EditModal = () => {
                         </Select>
                     </Form.Item>
                     <Form.Item label="Deadline">
-                        <DatePicker />
+                        <DatePicker onChange={(date, dateString) => setDeadline(dateString)}/>
                     </Form.Item>
                 </Form>
             </div>

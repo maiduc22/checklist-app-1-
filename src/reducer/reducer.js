@@ -14,14 +14,7 @@ const reducerFn = (state = [], action) => {
         case "Finish":{
             return state.map( todo => {
                 if(todo.id !== action.id) return todo
-                else return {
-                    id: todo.id, 
-                    title: todo.title,
-                    isDone: !todo.isDone,
-                    level: todo.level,
-                    deadline: todo.deadline,
-                    timeLeft: todo.timeLeft
-                }
+                else return {...todo, isDone: !todo.isDone}
             })
         }
         case "Delete":{
@@ -31,9 +24,28 @@ const reducerFn = (state = [], action) => {
             console.log("Clear All")
             return []
         }
-        case "Edit":{
-            return state
+        case "Edit_Title":{
+            return state.map(todo => {
+                if(todo.id !== action.id) return todo
+                else {
+                    // console.log(action.title)
+                    return {...todo, title: action.newtitle}
+                }
+            })
         }
+        case "Edit_Level":{
+            return state.map(todo => {
+                if(todo.id !== action.id) return todo
+                else return {...todo, level: action.newlevel}
+            })
+        }
+        case "Edit_Deadline":{
+            return state.map(todo => {
+                if(todo.id !== action.id) return todo
+                else return {...todo, deadline: action.newdeadline}
+            })
+        }
+
         default:
             return state
     }

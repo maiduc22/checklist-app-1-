@@ -1,31 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import ToDoList from './component/ToDoList/ToDoList';
-import { Row, Col, Button } from 'antd';
+import { Row, Col} from 'antd';
 import {
   SearchOutlined,
   CheckCircleFilled
 } from '@ant-design/icons';
 import 'antd/dist/antd.css'
-import Popup from './component/Popup/Popup';
-
-import { useSelector } from 'react-redux';
+import AddModal from './component/AddModal/AddModal';
 
 function App() {
-  // const [todos, setTodos] = useState([])		//task list 
-  
 
-
-  // var storage = JSON.parse(localStorage.getItem("todos"))
-  
-  // useEffect(()=>{
-  //   setTodos(storage)
-  // }, [])
-  // useEffect(()=>{
-  //   localStorage.setItem("todos", JSON.stringify(todos))
-  // }, [todos])
-
-  
   const [searchInput, setSearchInput] = useState("") 	//search result
   return (
     <div className='app-container'>
@@ -36,7 +21,7 @@ function App() {
         
           <Row className='row-header'>
             <Col span={8}>
-              <Popup></Popup>
+              <AddModal></AddModal>
             </Col>
             <Col span={4}></Col>
             <Col span={12} style={{textAlign: 'right'}}>

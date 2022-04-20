@@ -10,10 +10,10 @@ const addtask = (task) => {
     }
 }
 
-const finishTask = (id) => {
+const finishTask = () => {
     return{
         type: "Finish",
-        id
+        
     }
 }
 
@@ -30,12 +30,28 @@ const clearAll = () => {
     }
 }
 
-const editTask = (id) =>{
+const editTaskTitle = (id, newtitle) =>{
     return{
-        type: 'Edit',
-        id
+        type: "Edit_Title",
+        id,
+        newtitle
     }
 }
+const editTaskLevel = (id) =>{
+    return{
+        type: 'Edit_Level',
+        id,
+    }
+}
+const editTaskDeadline = (id, newDeadline) =>{
+    return{
+        type: 'Edit_Deadline',
+        id,
+        newDeadline
+    }
+}
+
+
 export default {
-    addtask, finishTask, deleteTask, clearAll, editTask
+    addtask, finishTask, deleteTask, clearAll, editTaskTitle, editTaskLevel, editTaskDeadline
 }
