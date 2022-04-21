@@ -12,7 +12,7 @@ import AddModal from './component/AddModal/AddModal';
 
 function App() {
 
-  const todos = useSelector(state => state.todos)
+  const todos = useSelector(state => state)
   console.log(todos)
 
   const [searchInput, setSearchInput] = useState("") 	//search input

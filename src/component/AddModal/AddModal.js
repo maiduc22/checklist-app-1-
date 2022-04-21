@@ -10,9 +10,9 @@ import { useDispatch} from 'react-redux';
 
 
 function AddModal() {
-    const [level, setLevel] = useState()  //priority level
-    const [deadline, setDeadline] = useState()        //deadline
-    const [title, setTitle] = useState('');
+    const [level, setLevel] = useState()                //priority level
+    const [deadline, setDeadline] = useState()          //deadline
+    const [title, setTitle] = useState('');             //input title
     const dispatch = useDispatch();
     
 
@@ -37,19 +37,24 @@ function AddModal() {
         setIsModalVisible(true);
     };
       
-    const handleOk = () => {
+    const handleOk = (e) => {
         setIsModalVisible(false);
-        dispatch({
-            type: 'Add',
-            id : uuid(),
-            title: title,
-            idDone: false,
-            level: level,
-            deadline: deadline
-        })
-        
-        setTitle('')
-        message.success("You added a task!")
+        if (title === '') {
+            message.error('You need to have a title')
+            e.preventDefault()
+        }
+        else {
+            dispatch({
+                type: 'Add',
+                id : uuid(),
+                title: title,
+                idDone: false,
+                level: level,
+                deadline: deadline
+            })
+            setTitle('')
+            message.success("You added a task!")
+        }
     };
       
     const handleCancel = () => {
@@ -66,7 +71,7 @@ function AddModal() {
             >
                 Add Task
             </Button>
-            <Modal title='Edit Task' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+            <Modal title='Edit Task' visible={isModalVisible} onOk={(e) => handleOk(e)} onCancel={handleCancel}>
                 <div>
                     <Form 
                         className='edit-form'
@@ -76,12 +81,6 @@ function AddModal() {
                         <Form.Item 
                             className='task-input' 
                             label="Title"
-                            rules={[
-                                {
-                                  required: true,
-                                  message: 'Please input your username!',
-                                },
-                            ]}
                         >
                             <Input value={title} onChange={(e) => setTitle(e.target.value)}/>
                         </Form.Item>
