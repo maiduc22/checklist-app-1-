@@ -1,14 +1,11 @@
 const initialState = {
-    todos: [], 
+    todos: [],
     filter: {
         filterTodos: [],
-        filterStatus: '',
-        filerLevel: '',
-        // search: ''
     }
 }
 
-const reducerFn = (state = initialState, action) => {
+const todosReducer = (state = initialState, action) => {
     switch (action.type){
         case "Add":
             const temp = [...state.todos, {
@@ -34,15 +31,17 @@ const reducerFn = (state = initialState, action) => {
         }
         case "Delete":{
             const temp = state.todos.filter(todo => todo.id !== action.id)
+            console.log(temp)
             return {
-                ...state,
-                todos: temp
+                state
             }
         }
         case "Clear":{
             return {
-                ...state,
-                todos: []
+                todos: [],
+                filter: {
+                    filterTodos: [],
+                }
             }
         }
         case "Edit_Title":{
@@ -96,23 +95,42 @@ const reducerFn = (state = initialState, action) => {
             }
         }
         case 'Filter_By_Level':{
-            const temp = state.todos.filter((todo) => {
-                if (todo.level == action.level) return todo
-            })
-            const new_filter = {...state.filter, level: action.level, filterTodos: temp}
-            return {
-                ...state,
-                filter: new_filter
+            if (action.payload === '') {
+                const temp = {...state.filter, filterTodos: state.todos}
+                return {
+                    ...state,
+                    filter: temp
+                }
+            }
+            else {
+                const temp = state.todos.filter((todo) => {
+                    if (todo.level == action.payload) return todo
+                })
+                const new_filter = {...state.filter, filterTodos: temp}
+                return {
+                    ...state,
+                    filter: new_filter
+                }
             }
         }
         case 'Filter_By_Status':{
-            const temp = state.todos.filter((todo) => {
-                if (todo.isDone == action.status) return todo
-            })
-            const new_filter = {...state.filter, status: action.status, filterTodos: temp}
-            return {
-                ...state,
-                filter: new_filter
+            console.log(typeof(action.payload))
+            if (action.payload === '') {
+                const temp = {...state.filter, filterTodos: state.todos}
+                return {
+                    ...state,
+                    filter: temp
+                }
+            }
+            else {
+                const temp = state.todos.filter((todo) => {
+                    if (todo.isDone == action.payload) return todo
+                })
+                const new_filter = {...state.filter, filterTodos: temp}
+                return {
+                    ...state,
+                    filter: new_filter
+                }
             }
         }
         case 'Drag':{
@@ -130,4 +148,4 @@ const reducerFn = (state = initialState, action) => {
     }
 }
 
-export default reducerFn
+export default todosReducer

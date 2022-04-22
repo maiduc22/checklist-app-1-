@@ -1,12 +1,12 @@
 import React from 'react'
-import "./Timeleft.css"
+import "./Deadline.css"
 import 'antd/dist/antd.css';
 import {
     CalendarOutlined,
 } from '@ant-design/icons';
 import moment from "moment";
 
-function TImeleft({deadline}) {
+function Deadline({deadline}) {
       return (
         <div className='time-dis'>
                 <CalendarOutlined  style={{marginRight: '6px'}}/>
@@ -16,4 +16,4 @@ function TImeleft({deadline}) {
   
 }
 
-export default TImeleft
+export default Deadline

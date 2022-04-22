@@ -56,8 +56,6 @@ function AddModal() {
             setTitle('')
             message.success("You added a task!")
         }
-        
-        console.log(store.getState())
     };
       
     const handleCancel = () => {
@@ -74,6 +72,14 @@ function AddModal() {
             >
                 Add Task
             </Button>
+
+            <Button
+                type='primary'
+                onClick={() => dispatch({type: 'Clear'})}
+                shape="round"
+                className='btn-add-modal'
+            >Reset</Button>
+
             <Modal title='Edit Task' visible={isModalVisible} onOk={(e) => handleOk(e)} onCancel={handleCancel}>
                 <div>
                     <Form 

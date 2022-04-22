@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Level from "../Level/Level";
-import TImeleft from "../Timeleft/TImeleft";
+import Deadline from '../Deadline/Deadline';
 import "./ToDoList.css";
 import {message} from "antd";
 import { Row, Col } from 'antd';
@@ -19,27 +19,27 @@ import { useDispatch, useSelector } from "react-redux";
 function ToDoList({search}){
     const dispatch = useDispatch()
     const todos = useSelector(state => state.todos)
+    const filter = useSelector(state => state.filter.filterTodos)
 
     useEffect(() => {
         dispatch({
             type: "Filter_By_Title",
             search: search
         })
-    },[todos, search])
-
-    const filter = useSelector(state => state.filter.filterTodos)
+    },[todos])
+    useEffect(() => {
+        dispatch({
+            type: "Filter_By_Title",
+            search: search
+        })
+    },[search])
     console.log(filter)
-    
-
-    // var filter = todos.filter(todo => {
-    //     if (search === '') return todo
-    //     else return todo.title.include(search)
-    // })
+    console.log(todos)
 
     function handleDelete(id){
         dispatch({
             type: 'Delete',
-            id: id
+            id
         })
         message.warning("You deleted a task")
     }
@@ -93,7 +93,7 @@ function ToDoList({search}){
                                                         <Level level={todo.level}></Level>
                                                     </Col>
                                                     <Col span={5}>
-                                                        <TImeleft deadline={todo.deadline}></TImeleft>
+                                                        <Deadline deadline={todo.deadline}></Deadline>
                                                     </Col>
                                                 </Row>
                                             </div>

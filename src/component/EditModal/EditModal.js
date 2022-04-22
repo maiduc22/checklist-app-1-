@@ -8,7 +8,8 @@ const EditModal = ({id}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
   const todos = useSelector(state => state.todos)
-  let todo = todos.find(todo => todo.id === id)
+  const todo = todos.find(todo => todo.id === id)
+  console.log(todos)
 
   const [newtitle, setTitle] = useState(todo.title)
   const [newdeadline, setDeadline] = useState(todo.deadline)

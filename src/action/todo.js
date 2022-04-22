@@ -6,16 +6,17 @@ const addtask = (task) => {
     }
 }
 
-const finishTask = () => {
+const finishTask = (id) => {
     return{
         type: "Finish",
+        id
     }
 }
 
 const deleteTask = (id) => {
     return{
         type: 'Delete',
-        payload: id
+        id
     }
 }
 
@@ -58,10 +59,10 @@ const filterLevel = (level) => {
     }
 }
 
-const filterStatus = (seacrh) => {
+const filterStatus = (status) => {
     return{
         type: 'Filter_By_Title',
-        seacrh
+        status
     }
 }
 

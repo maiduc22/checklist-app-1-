@@ -2,7 +2,7 @@ import { createStore } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-import reducerFn from './reducer/reducer'
+import rootReducer from './reducer/rootReducer'
 
 const persistConfig = {
     key: 'root',
@@ -10,7 +10,7 @@ const persistConfig = {
     whitelist: ['todos']
 }
 
-const persistedReducer = persistReducer(persistConfig,reducerFn);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = createStore(persistedReducer);
 export const persistor = persistStore(store);
