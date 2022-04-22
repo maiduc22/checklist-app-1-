@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Level from "../Level/Level";
 import TImeleft from "../Timeleft/TImeleft";
@@ -16,15 +17,25 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 function ToDoList({search}){
-
-    const todos = useSelector(state => state.todos)
-    console.log(todos)
     const dispatch = useDispatch()
-    var filter = todos.filter((todo) => {
-        if (search === '') return todo
-        else return todo.title.includes(search)
-    })
+    const todos = useSelector(state => state.todos)
+
+    useEffect(() => {
+        dispatch({
+            type: "Filter_By_Title",
+            search: search
+        })
+    },[todos, search])
+
+    const filter = useSelector(state => state.filter.filterTodos)
+    console.log(filter)
     
+
+    // var filter = todos.filter(todo => {
+    //     if (search === '') return todo
+    //     else return todo.title.include(search)
+    // })
+
     function handleDelete(id){
         dispatch({
             type: 'Delete',
@@ -42,9 +53,10 @@ function ToDoList({search}){
     }
 
     function handleDrag(item){
-        if (!item.destination) return
-        let [drag] = filter.splice(item.source.index, 1)
-        filter.splice(item.destination.index, 0, drag)    
+        dispatch({
+            type: 'Drag',
+            item
+        })
     }
     return (
         <DragDropContext onDragEnd={handleDrag}>
@@ -77,10 +89,10 @@ function ToDoList({search}){
                                                         </div>                      
                                                     </Col>
                                                     
-                                                    <Col span={4}>
+                                                    <Col span={3}>
                                                         <Level level={todo.level}></Level>
                                                     </Col>
-                                                    <Col span={4}>
+                                                    <Col span={5}>
                                                         <TImeleft deadline={todo.deadline}></TImeleft>
                                                     </Col>
                                                 </Row>

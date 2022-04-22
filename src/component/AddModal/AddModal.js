@@ -7,6 +7,7 @@ import { PlusSquareOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css'
 import "./AddModal.css"
 import { useDispatch} from 'react-redux';
+import { store } from '../../store';
 
 
 function AddModal() {
@@ -55,6 +56,8 @@ function AddModal() {
             setTitle('')
             message.success("You added a task!")
         }
+        
+        console.log(store.getState())
     };
       
     const handleCancel = () => {

@@ -2,25 +2,20 @@
 const addtask = (task) => {
     return{
         type: "Add",
-        id: task.id,
-        title: task.title,
-        isDone: task.isDone,
-        level: task.level,
-        deadline: task.deadline,
+        payload: task
     }
 }
 
 const finishTask = () => {
     return{
         type: "Finish",
-        
     }
 }
 
 const deleteTask = (id) => {
     return{
         type: 'Delete',
-        id
+        payload: id
     }
 }
 
@@ -33,25 +28,51 @@ const clearAll = () => {
 const editTaskTitle = (id, newtitle) =>{
     return{
         type: "Edit_Title",
-        id,
-        newtitle
+        payload: {id, newtitle}
     }
 }
 const editTaskLevel = (id) =>{
     return{
         type: 'Edit_Level',
-        id,
+        payload: id
     }
 }
 const editTaskDeadline = (id, newDeadline) =>{
     return{
         type: 'Edit_Deadline',
-        id,
-        newDeadline
+        payload: {id, newDeadline}
     }
 }
 
+const filterTitle = (seacrh) => {
+    return{
+        type: 'Filter_By_Title',
+        seacrh
+    }
+}
+
+const filterLevel = (level) => {
+    return{
+        type: 'Filter_By_Title',
+        level
+    }
+}
+
+const filterStatus = (seacrh) => {
+    return{
+        type: 'Filter_By_Title',
+        seacrh
+    }
+}
+
+const dragItem = (item) => {
+    return{
+        type: 'Drag',
+        item
+    }
+}
 
 export default {
-    addtask, finishTask, deleteTask, clearAll, editTaskTitle, editTaskLevel, editTaskDeadline
+    addtask, finishTask, deleteTask, clearAll, editTaskTitle, filterLevel, filterStatus, filterTitle,
+    editTaskLevel, editTaskDeadline, dragItem
 }

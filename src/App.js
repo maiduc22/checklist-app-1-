@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './App.css';
 import ToDoList from './component/ToDoList/ToDoList';
 import { Row, Col} from 'antd';
@@ -9,13 +9,16 @@ import {
 } from '@ant-design/icons';
 import 'antd/dist/antd.css'
 import AddModal from './component/AddModal/AddModal';
+import Filter from './component/Filter/Filter';
 
 function App() {
-
-  const todos = useSelector(state => state)
-  console.log(todos)
-
+  const dispatch = useDispatch()
   const [searchInput, setSearchInput] = useState("") 	//search input
+
+  function handleChange(e){
+    setSearchInput(e.target.value);
+  }
+
   return (
     <div className='app-container'>
       <div className='app-wrapper'>
@@ -42,7 +45,7 @@ function App() {
                 }}
                 placeholder={`Type to search`}
                 value={searchInput}
-                onChange = {(e) => setSearchInput(e.target.value)}	
+                onChange = {(e) => handleChange(e)}	
               ></input>
             </Col>
           </Row>
@@ -52,6 +55,9 @@ function App() {
               search={searchInput}
             >    
             </ToDoList>
+          </div>
+          <div>
+            <Filter></Filter>
           </div>
 
       </div>

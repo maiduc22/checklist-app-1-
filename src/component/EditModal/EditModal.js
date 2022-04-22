@@ -22,20 +22,18 @@ const EditModal = ({id}) => {
     setIsModalVisible(false);
     dispatch({
       type: "Edit_Title",
-      id,
-      newtitle
+      payload: {id, newtitle}
     })
 
     dispatch({
       type: "Edit_Level",
-      id,
-      newlevel
+      payload: {id,
+        newlevel}
     })
 
     dispatch({
       type: "Edit_Deadline",
-      id,
-      newdeadline
+      payload: {id, newdeadline}
     })
   };
 
