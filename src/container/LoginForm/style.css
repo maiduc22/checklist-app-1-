@@ -9,16 +9,18 @@
   }
   .form-container .form {
     width: 100%;
+    padding: 200px 0 0 0;
   }
   .form-container .form input {
-    padding: 3px;
+    padding: 10px;
+    margin: 3px;
+    border-radius: 5px;
+    border: 1px solid #40A9FF;
   }
-  .form-container .btn-login {
-    cursor: pointer;
-    padding: 3px;
-    font-weight: 500;
-    border: 1px solid #b3b3b3;
+  .form-container .form input:focus{
+    outline: #40A9FF;
   }
-  .form-container .btn-login:hover {
-    border: 1px solid white;
+  .btn-login {
+    margin: 10px;
   }
+  

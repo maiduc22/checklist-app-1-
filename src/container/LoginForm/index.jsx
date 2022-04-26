@@ -1,26 +1,40 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
-
-import { handleLoggin, handleUsername, handlePassword } from '../../action/login'
+import './style.css'
+import { 	
+	handleLoggin,
+	handleUsername, 
+	handlePassword 
+} from '../../action/login'
 
 const LoginForm = ()  => { 
-	const dispatch = useDispatch
+	const dispatch = useDispatch()
+	const history = useNavigate()
+	const isLogged = useSelector((state) => state.user.isLogged)
 
 	const handleLoginBtn = () => {
 		dispatch(handleLoggin)
+		history('/checklist')
 	}
-
 	const handleUsernameChange = (e) => {
-		dispatch(handleUsername(e.target.value))
+		dispatch(handleUsername(e))
 	}
 	const handlePasswordChange = (e) => {
-		dispatch(handlePassword(e.target.value))
+		dispatch(handlePassword(e))
 	}
 
+	// useEffect(() => {
+	// 	if (isLogged) {
+	// 	  history('/')
+	// 	}
+	// }, [isLogged, history])
+	
 	return (
 		<div className="form-container">
-		  <form className="form">
+		  <form className="form" autoComplete='false'>
 			 <input
 				className="username-input"
 				type="text"
@@ -36,7 +50,7 @@ const LoginForm = ()  => {
 				onChange={handlePasswordChange}
 			 />
 		  </form>
-		  <Button className='btn-login' onClick={handleLoginBtn}>LOGIN</Button>
+		  <Button type='primary' className='btn-login' onClick={handleLoginBtn}>LOGIN</Button>
 		</div>
 	)
 }

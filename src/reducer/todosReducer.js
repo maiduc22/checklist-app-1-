@@ -1,5 +1,6 @@
 const initialState = {
     todos: [],
+    
     filter: {
         filterTodos: [],
     }
@@ -24,6 +25,7 @@ const todosReducer = (state = initialState, action) => {
                 if (todo.id !== action.id) return todo
                 else return {...todo, isDone: !todo.isDone}
             })
+            
             return {
                 ...state,
                 todos: temp
@@ -33,7 +35,8 @@ const todosReducer = (state = initialState, action) => {
             const temp = state.todos.filter(todo => todo.id !== action.id)
             console.log(temp)
             return {
-                state
+                ...state,
+                todos: temp
             }
         }
         case "Clear":{
@@ -104,7 +107,7 @@ const todosReducer = (state = initialState, action) => {
             }
             else {
                 const temp = state.todos.filter((todo) => {
-                    if (todo.level == action.payload) return todo
+                    if (todo.level === action.payload) return todo
                 })
                 const new_filter = {...state.filter, filterTodos: temp}
                 return {
@@ -134,13 +137,13 @@ const todosReducer = (state = initialState, action) => {
             }
         }
         case 'Drag':{
-            const temp = [...state.filter.filterTodos]
+            const temp = [...state.todos]
             let [drag] = temp.splice(action.item.source.index, 1)
             temp.splice(action.item.destination.index, 0, drag)
-            const new_filter = {...state.filter, filterTodos: temp}
+            // const new_filter = {...state.filter, filterTodos: temp}
             return{
                 ...state,
-                filter: new_filter
+                todos: temp
             }            
         }
         default:

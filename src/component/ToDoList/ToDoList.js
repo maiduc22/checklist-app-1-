@@ -17,24 +17,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 function ToDoList({search}){
+    console.log(useSelector(state => state))
     const dispatch = useDispatch()
-    const todos = useSelector(state => state.todos)
-    const filter = useSelector(state => state.filter.filterTodos)
+    const todos = useSelector(state => state.todos.todos)
+    // console.log(todos)
+    const filter = useSelector(state => state.todos.filter.filterTodos)
+    // console.log(filter)
 
     useEffect(() => {
         dispatch({
             type: "Filter_By_Title",
             search: search
         })
-    },[todos])
-    useEffect(() => {
-        dispatch({
-            type: "Filter_By_Title",
-            search: search
-        })
-    },[search])
-    console.log(filter)
-    console.log(todos)
+    }, [todos, search])
 
     function handleDelete(id){
         dispatch({
