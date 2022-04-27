@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input, Checkbox, message} from 'antd';
+import { Form, Input, Checkbox, message} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './style.css'
 import { 	
@@ -91,20 +91,21 @@ const LoginForm = ()  => {
 						</div>
 
 						<div className='login-btn-wrapper'>
-							<Button type="primary" 
-								htmlType="submit" 
-								className="btn-login"
+							<ButtonCustom
+								className='btn-login'
+								type='primary'
 								onClick={handleLoginBtn}
 							>
 								Log In
-							</Button>
+							</ButtonCustom>
 
-							<Button
-								className='btn-creatacc'
-								type='default'
+							<ButtonCustom
+								className='btn-newacc'
+								type='secondary'
+								
 							>
 								Create Account
-							</Button>
+							</ButtonCustom>
 						</div>
 					</Form>
 				</div>

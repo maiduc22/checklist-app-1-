@@ -17,7 +17,7 @@ const ButtonCustom = ({
     return (
         <div
             onClick={onClick}
-            className = {`btn btn-size-${size} btn-icon-${icon} btn-type-${type} btn-shape-${shape} btn-bg-${background} btn-color-${color}`} 
+            className = {`btn btn-size-${size} btn-icon-${icon} btn-type-${type} btn-shape-${shape}`} 
         >
             {children}
         </div>

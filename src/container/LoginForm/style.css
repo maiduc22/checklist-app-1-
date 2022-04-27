@@ -47,16 +47,10 @@
 	padding: 20px 0px;
 }
 
-.form-wrapper Button{
-	border-radius: 10px;
-	width: 178px;
-	font-size: 15px;
-	margin: 24px 0 0px 0;
-}
-
 .login-btn-wrapper{
 	display: flex;
 	justify-content: space-between;
+	margin-top: 25px;
 }
 
 .form-wrapper .action-wrapper{
