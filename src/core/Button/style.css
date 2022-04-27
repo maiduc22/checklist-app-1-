@@ -1,1 +1,56 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+.btn {
+  cursor: pointer;
+  padding: 10px;
+  font-weight: bolder;
+}
+
+.btn-size-large {
+  font-size: 20px;
+}
+
+.btn-size-medium {
+  font-size: 16px;
+}
+
+.btn-color-primary {
+  color: #fff;
+}
+
+.btn-color-secondary {
+  color: #035397;
+}
+
+.btn-bg-primary {
+  background: #035397;
+}
+
+.btn-bg-secondary {
+  background-color: #fff;
+}
+
+.btn-shape-round {
+  border-radius: 15px;
+}
+
+.btn-type-primary {
+  background: #035397;
+  color: #fff;
+}
+
+.btn-type-primary:hover {
+  background-color: #fff;
+  color: #035397;
+  border: #035397 2px solid;
+}
+
+.btn-type-secondary {
+  background-color: #fff;
+  color: #035397;
+  border: #035397 2px solid;
+}
+
+.btn-type-secondary:hover {
+  background: #035397;
+  color: #fff;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,52 @@
+@import '../../scss/color.scss';
+
+.btn {
+    cursor: pointer;
+    padding: 10px;
+    font-weight: bolder;
+    
+    &-size-large{
+        font-size: 20px;
+    }
+
+    &-size-medium{
+        font-size: 16px;
+    }
+
+    &-color-primary {
+        color: $white;
+    }
+    &-color-secondary {
+        color: $blue;
+    }
+    &-bg-primary{
+        background: $blue;
+    }
+    &-bg-secondary{
+        background-color: $white;
+    }
+
+    &-shape-round{
+        border-radius: 15px;
+    }
+
+    &-type-primary{
+        background: $blue;
+        color: $white;
+        &:hover {
+            background-color: $white;
+            color: $blue;
+            border: $blue 2px solid;
+        }
+    }
+
+    &-type-secondary{
+        background-color: $white;
+        color: $blue;
+        border: $blue 2px solid;
+        &:hover {
+            background: $blue;
+            color: $white;
+        } 
+    }
+}

@@ -1,23 +1,27 @@
 import React from "react";
+import './style.css'
 
-const Button = ({
+const ButtonCustom = ({
     animation, 
     className = '',
     children,
     onClick,
-    type, 
-    shape,
-    border,
-    background,
-    color,
+    size = 'medium',
+    icon,
+    type = 'primary', 
+    shape = 'round',
+    background = '',
+    color = '',
     ...props
 }) => {
     return (
         <div
             onClick={onClick}
-            className = {`btn btn-type-${type} btn-bd-${border} btn-bg-${background} btn-color-${color}`} 
+            className = {`btn btn-size-${size} btn-icon-${icon} btn-type-${type} btn-shape-${shape} btn-bg-${background} btn-color-${color}`} 
         >
             {children}
         </div>
     )
 }
+
+export default ButtonCustom
