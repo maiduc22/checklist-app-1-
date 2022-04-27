@@ -9,6 +9,8 @@ import {
 	handleUsername, 
 	handlePassword 
 } from '../../action/login'
+
+import Icon from '../../core/Icon';
 import ButtonCustom from '../../core/Button';
 
 const LoginForm = ()  => { 
@@ -32,9 +34,6 @@ const LoginForm = ()  => {
 	
 	return (
 		<div className='login-container'>	
-
-			<ButtonCustom size='large' type='secondary' shape='round' children='Click me'></ButtonCustom>	
-
 			<div className="loginform-wrapper">
 				<div className='form-wrapper'>
 					<Form

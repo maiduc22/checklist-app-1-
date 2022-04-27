@@ -1,0 +1,61 @@
+.icon {
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 5px;
+}
+
+.icon-size-small {
+  height: 30px;
+  width: 30px;
+  font-size: 24px;
+  border: none;
+}
+
+.icon-size-large {
+  font-size: 30px;
+  height: 45px;
+  width: 45px;
+}
+
+.icon-color-default {
+  color: #035397;
+  background-color: #fff;
+  border: 2px solid #035397;
+  border-radius: 50%;
+}
+
+.icon-color-default:hover {
+  color: #fff;
+  background: #035397;
+}
+
+.icon-color-red {
+  color: #E64F3B;
+  border: none;
+}
+
+.icon-color-yellow {
+  color: #EFD000;
+  border: none;
+}
+
+.icon-color-green {
+  color: #54B445;
+  border: none;
+}
+
+.icon-color-blue {
+  color: #035397;
+  border: none;
+}
+/*# sourceMappingURL=style.css.map */
