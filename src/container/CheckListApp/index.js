@@ -11,6 +11,7 @@ import 'antd/dist/antd.css'
 
 import ToDoList from '../../component/ToDoList/ToDoList'
 import Filter from '../../component/Filter/Filter'
+import HeaderBar from '../../component/HeaderBar';
 import AddModal from '../../component/AddModal/AddModal';
 
 const CheckList = () => {
@@ -21,49 +22,54 @@ const CheckList = () => {
   }
 
   return (
-    <div className='app-container'>
-      <div className='app-wrapper'>
-        <div className='title'>
-          <h1>CHECKLIST APP <CheckCircleFilled /></h1>
-        </div >
-        
-          <Row className='row-header'>
-            <Col span={8}>
-              <AddModal></AddModal>
-            </Col>
-            <Col span={4}></Col>
-            <Col span={12} style={{textAlign: 'right'}}>
-              <SearchOutlined style={{fontSize: '16px'}}></SearchOutlined>
-              <input
-                style={{
-                  margin: '0 10px 0 0',
-                  width: '220px',
-                  border: 'none',
-                  fontSize: '18px',
-                  padding: '5px',
-                  background: '#EFF1F2'
-                  
-                }}
-                placeholder={`Type to search`}
-                value={searchInput}
-                onChange = {(e) => handleChange(e)}	
-              ></input>
-            </Col>
-          </Row>
-		
-          <div>
-            <ToDoList 
-              search={searchInput}
-            >    
-            </ToDoList>
+    <div className='checklistapp-wrapper'>
+      <div className='app-container'>
+        <div>
+          <div className="headerbar">
+              <HeaderBar></HeaderBar>
           </div>
-          <div>
-            <Filter></Filter>
-          </div>
+        </div>
 
+        <div className='app-wrapper'>
+          <div className='title'>
+            <h1>CHECKLIST APP <CheckCircleFilled /></h1>
+          </div >
+            <Row className='row-header'>
+              <Col span={8}>
+                <AddModal></AddModal>
+              </Col>
+              <Col span={4}></Col>
+              <Col span={12} style={{textAlign: 'right'}}>
+                <SearchOutlined style={{fontSize: '16px'}}></SearchOutlined>
+                <input
+                  style={{
+                    margin: '0 10px 0 0',
+                    width: '220px',
+                    border: 'none',
+                    fontSize: '18px',
+                    padding: '5px',
+                    background: '#EFF1F2'
+                    
+                  }}
+                  placeholder={`Type to search`}
+                  value={searchInput}
+                  onChange = {(e) => handleChange(e)}	
+                ></input>
+              </Col>
+            </Row>
+      
+            <div>
+              <ToDoList 
+                search={searchInput}
+              >    
+              </ToDoList>
+            </div>
+            {/* <div>
+              <Filter></Filter>
+            </div> */}
+        </div>
       </div>
     </div>
-    
   )
 }
 

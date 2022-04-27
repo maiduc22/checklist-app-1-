@@ -33,10 +33,12 @@ const todosReducer = (state = initialState, action) => {
         }
         case "Delete":{
             const temp = state.todos.filter(todo => todo.id !== action.id)
-            console.log(temp)
+            const temp2 = state.filter.filterTodos.filter(todo => todo.id !== action.id)
+            const new_filter = {...state.filter, filterTodos: temp2}
             return {
                 ...state,
-                todos: temp
+                todos: temp,
+                filter: new_filter
             }
         }
         case "Clear":{
@@ -127,7 +129,7 @@ const todosReducer = (state = initialState, action) => {
             }
             else {
                 const temp = state.todos.filter((todo) => {
-                    if (todo.isDone == action.payload) return todo
+                    if (todo.isDone === action.payload) return todo
                 })
                 const new_filter = {...state.filter, filterTodos: temp}
                 return {

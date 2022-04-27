@@ -1,0 +1,22 @@
+.headerbar{
+    height: 0px;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 30px 30px 0;
+}
+
+.headerbar-wrapper Button{
+    background: none;
+    color: #035397;
+    margin: 5px;
+    border: #035397 1px solid;
+    height: 40px;
+    width: 40px;
+    font-size: 16px;
+}
+
+.headerbar-wrapper Button:hover {
+    color: white;
+    background-color: #035397;
+}

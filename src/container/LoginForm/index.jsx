@@ -1,8 +1,8 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'antd';
+import { Button, Form, Input, Checkbox, message} from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './style.css'
 import { 	
 	handleLoggin,
@@ -13,11 +13,11 @@ import {
 const LoginForm = ()  => { 
 	const dispatch = useDispatch()
 	const history = useNavigate()
-	const isLogged = useSelector((state) => state.user.isLogged)
 
 	const handleLoginBtn = () => {
 		dispatch(handleLoggin)
 		history('/checklist')
+		message.success("Login Successfully")
 	}
 	const handleUsernameChange = (e) => {
 		dispatch(handleUsername(e))
@@ -25,32 +25,91 @@ const LoginForm = ()  => {
 	const handlePasswordChange = (e) => {
 		dispatch(handlePassword(e))
 	}
-
-	// useEffect(() => {
-	// 	if (isLogged) {
-	// 	  history('/')
-	// 	}
-	// }, [isLogged, history])
+	const onFinish = (values) => {
+		console.log('Received values of form: ', values)
+	}
 	
 	return (
-		<div className="form-container">
-		  <form className="form" autoComplete='false'>
-			 <input
-				className="username-input"
-				type="text"
-				placeholder="Username"
-				required
-				onChange={handleUsernameChange}
-			 />
-			 <input
-				className="password-input"
-				type="password"
-				placeholder="Password"
-				required
-				onChange={handlePasswordChange}
-			 />
-		  </form>
-		  <Button type='primary' className='btn-login' onClick={handleLoginBtn}>LOGIN</Button>
+		<div className='login-container'>		
+			<div className="loginform-wrapper">
+				<div className='form-wrapper'>
+					<Form
+						name="normal_login"
+						className="login-form"
+						initialValues={{
+							remember: false,
+						}}
+						onFinish={onFinish}
+					>
+						<h1>Welcome back to Checklist App</h1>
+						<p>It's great to have you back!</p>
+
+						<Form.Item
+							name="username"
+							rules={[
+								{
+									required: true,
+									message: 'Please input your Username!',
+								}
+							]}
+						>
+							<Input 
+								prefix={<UserOutlined className="site-form-item-icon" />} 
+								placeholder="Username"
+								onChange={handleUsernameChange}
+							/>
+						</Form.Item>
+
+						<Form.Item 
+							name="password"
+							rules={[
+								{
+									required: true,
+									message: 'Please input your Password!',
+								},
+							]}
+						>
+							<Input
+								prefix={<LockOutlined className="site-form-item-icon" />}
+								type="password"
+								placeholder="Password"
+								onChange={handlePasswordChange}
+							/>
+						</Form.Item>
+
+						<div className='action-wrapper'>
+								<Form.Item name="remember" valuePropName="checked" noStyle>
+								<Checkbox className='login-action'>Remember me</Checkbox>
+								</Form.Item>
+
+								<a href="" className='login-action'>
+									Forgot password
+								</a>
+						</div>
+
+						<div className='login-btn-wrapper'>
+							<Button type="primary" 
+								htmlType="submit" 
+								className="btn-login"
+								onClick={handleLoginBtn}
+							>
+								Log In
+							</Button>
+
+							<Button
+								className='btn-creatacc'
+								type='default'
+							>
+								Create Account
+							</Button>
+						</div>
+					</Form>
+				</div>
+
+				{/* <div className='image-wrapper'>
+					
+				</div> */}
+			</div>
 		</div>
 	)
 }

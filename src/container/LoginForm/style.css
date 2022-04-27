@@ -1,26 +1,86 @@
-.form-container {
-    text-align: center;
-    margin: auto;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .form-container .form {
-    width: 100%;
-    padding: 200px 0 0 0;
-  }
-  .form-container .form input {
-    padding: 10px;
-    margin: 3px;
-    border-radius: 5px;
-    border: 1px solid #40A9FF;
-  }
-  .form-container .form input:focus{
-    outline: #40A9FF;
-  }
-  .btn-login {
-    margin: 10px;
-  }
-  
+.login-container{
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+	font-family: 'Poppin';
+	align-items: center;
+	justify-content: center;
+	background-color: #F6F5F7;
+	
+}
+
+.loginform-wrapper {
+	display: flex;
+	flex-direction: row;
+	border-radius: 10px;
+	width: 460px;
+	
+}
+
+.image-wrapper{
+	border-radius: 10px;
+	width: 10px;
+	background-color: #40A9FF;
+	;
+}
+
+.form-wrapper{
+	border-radius: 10px;
+	width: 450px;
+	height: 500px;
+	background: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 30px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.form-wrapper h1{
+	font-size: 32px;
+	font-weight: 900;
+	font-family: 'Poppin';
+	
+}
+.form-wrapper p{
+	font-size: 16px;
+	padding: 20px 0px;
+}
+
+.form-wrapper Button{
+	border-radius: 10px;
+	width: 178px;
+	font-size: 15px;
+	margin: 24px 0 0px 0;
+}
+
+.login-btn-wrapper{
+	display: flex;
+	justify-content: space-between;
+}
+
+.form-wrapper .action-wrapper{
+	display: flex;
+	justify-content: space-between;
+}
+
+.login-action {
+	position: relative;
+}
+
+.login-action::before {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #40A9FF;
+	visibility: hidden;
+	transition: all 0.2s ease-in-out;
+}
+
+.login-action:hover::before {
+	visibility: visible;
+  	width: 100%;
+}

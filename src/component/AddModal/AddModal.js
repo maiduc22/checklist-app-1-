@@ -42,7 +42,7 @@ function AddModal() {
         setIsModalVisible(false);
         if (title === '') {
             message.error('You need to have a title')
-            e.preventDefault()
+            
         }
         else {
             dispatch({
@@ -61,6 +61,8 @@ function AddModal() {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+
+    
     return (
         <div className='add-modal'>
             <Button 
@@ -80,7 +82,7 @@ function AddModal() {
                 className='btn-add-modal'
             >Reset</Button>
 
-            <Modal title='Edit Task' visible={isModalVisible} onOk={(e) => handleOk(e)} onCancel={handleCancel}>
+            <Modal title='Add Task' visible={isModalVisible} onOk={(e) => handleOk(e)} onCancel={handleCancel}>
                 <div>
                     <Form 
                         className='edit-form'
@@ -91,7 +93,7 @@ function AddModal() {
                             className='task-input' 
                             label="Title"
                         >
-                            <Input value={title} onChange={(e) => setTitle(e.target.value)}/>
+                            <Input required={true} value={title} onChange={(e) => setTitle(e.target.value)}/>
                         </Form.Item>
                         <Form.Item  label="Priority Level">
                             <Select onChange={handleSelectTag}> 
