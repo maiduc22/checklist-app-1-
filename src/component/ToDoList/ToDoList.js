@@ -77,10 +77,11 @@ function ToDoList({search}){
                                                             </Col>
                                                             <Col span={15}>
                                                                 <div className="main-context">
-                                                                    <div className="task-name">
+                                                                    <div className="task-name-wrapper">
                                                                         {todo.title}
                                                                     </div>
-                                                                    <div className="btn">
+
+                                                                    <div className="button-wrapper">
                                                                         <button className="btn-finish" 
                                                                             onClick={()=> handleFinish(todo.id)}
                                                                         >

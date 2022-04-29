@@ -7,7 +7,7 @@ li {
     border-radius: 5px ;
     margin: 10px;
     padding: 0px;
-    height: 65px;
+    height: 70px;
     width: 650px;
     align-items: center;
     text-align: center;
@@ -18,24 +18,24 @@ li {
 .label-Highest{
     background-color: #E64F3B;
     width: 10px;
-    height: 65px;
+    height: 70px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Critical{
     background-color: #FE9319;
     width: 10px;
-    height: 65px;
+    height: 70px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Alarming{
     background: #EFD000;
     width: 10px;
-    height: 65px;
+    height: 70px;
     border-radius: 5px 0 0 5px; 
 }
 .label-Low{
     width: 10px;
-    height: 65px;
+    height: 70px;
     background: #54B445;
     border-radius: 5px 0 0 5px; 
 }
@@ -46,9 +46,9 @@ li {
     margin: 5px;
     font-size: small;
 }
-.task-name{
-    font-size: larger;
-    font-weight: bolder;
+.task-name-wrapper{
+    font-size: x-large;
+    font-weight: 900;
 }
 .tasklist{
     height: 320px;
@@ -75,16 +75,8 @@ li {
 }
 
 .main-context{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    text-align: left;
 }
-
-.task-name input{
-    font-size: 20px;
-    font-weight: bold;
-}
-
 
 .task-true{
     opacity: 0.2;
@@ -93,3 +85,6 @@ li {
     opacity: 1;
 }
 
+.main-context .button-wrapper {
+    text-align: left;
+}
