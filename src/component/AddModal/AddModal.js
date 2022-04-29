@@ -1,13 +1,17 @@
 import { Input } from 'antd'
 import React, { useState } from 'react'
+import {ReactComponent as AddSvg} from '../../assets/file-add-svgrepo-com.svg'
 import { v4 as uuid } from 'uuid';
+
 import {message} from "antd";
 import { Form, Select, DatePicker, Button, Modal} from 'antd'
-import { PlusSquareOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css'
 import "./AddModal.css"
 import { useDispatch} from 'react-redux';
-import { store } from '../../store';
+
+
+
+import ButtonCustom from '../../core/Button';
 
 
 function AddModal() {
@@ -65,22 +69,22 @@ function AddModal() {
     
     return (
         <div className='add-modal'>
-            <Button 
-                type="primary" 
-                onClick={showModal} 
-                icon={<PlusSquareOutlined />} 
-                shape="round"
-                className='btn-add-modal'
-            >
-                Add Task
-            </Button>
+            <div className='btn-wrapper'>
+                <ButtonCustom 
+                    type='primary'
+                    onClick={showModal}
+                >
+                    New Task
+                    {/* <i class="fa fa-plus-square-o" aria-hidden="true"></i> */}
+                </ButtonCustom>
 
-            <Button
-                type='primary'
-                onClick={() => dispatch({type: 'Clear'})}
-                shape="round"
-                className='btn-add-modal'
-            >Reset</Button>
+                <ButtonCustom
+                    onClick={() => dispatch({type: 'Clear'})}
+                    type = 'secondary'
+                >
+                    Clear
+                </ButtonCustom>
+            </div>
 
             <Modal title='Add Task' visible={isModalVisible} onOk={(e) => handleOk(e)} onCancel={handleCancel}>
                 <div>

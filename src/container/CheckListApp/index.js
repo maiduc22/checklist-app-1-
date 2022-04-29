@@ -14,6 +14,7 @@ import Filter from '../../component/Filter/Filter'
 import HeaderBar from '../../component/HeaderBar';
 import AddModal from '../../component/AddModal/AddModal';
 
+
 const CheckList = () => {
   const [searchInput, setSearchInput] = useState("") 	//search input
 
