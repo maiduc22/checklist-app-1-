@@ -4,7 +4,7 @@ import {ReactComponent as AddSvg} from '../../assets/file-add-svgrepo-com.svg'
 import { v4 as uuid } from 'uuid';
 
 import {message} from "antd";
-import { Form, Select, DatePicker, Button, Modal} from 'antd'
+import { Form, Select, DatePicker, Modal} from 'antd'
 import 'antd/dist/antd.css'
 import "./AddModal.css"
 import { useDispatch} from 'react-redux';
@@ -74,8 +74,7 @@ function AddModal() {
                     type='primary'
                     onClick={showModal}
                 >
-                    New Task
-                    {/* <i class="fa fa-plus-square-o" aria-hidden="true"></i> */}
+                    New Task                                                                                                            
                 </ButtonCustom>
 
                 <ButtonCustom
@@ -85,7 +84,7 @@ function AddModal() {
                     Clear
                 </ButtonCustom>
             </div>
-
+            
             <Modal title='Add Task' visible={isModalVisible} onOk={(e) => handleOk(e)} onCancel={handleCancel}>
                 <div>
                     <Form 

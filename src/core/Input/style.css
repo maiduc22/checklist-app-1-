@@ -1,0 +1,48 @@
+.input {
+  padding: 20px;
+}
+
+.input input {
+  margin-left: 50px;
+}
+
+.input i {
+  position: absolute;
+  padding: 20px 0 0 5px;
+}
+
+.input-size-default {
+  font-size: 24px;
+}
+
+.input-size-large {
+  font-size: 32px;
+}
+
+.input-size-small {
+  font-size: 16px;
+}
+
+.input-border-none input {
+  border: none;
+}
+
+.input-border-none :focus {
+  outline: none;
+}
+
+.input-border-default input {
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+}
+
+.input-border-default :focus {
+  -webkit-box-shadow: 0 0 5px #51cbee;
+          box-shadow: 0 0 5px #51cbee;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #51cbee;
+}
+/*# sourceMappingURL=style.css.map */

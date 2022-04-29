@@ -1,0 +1,47 @@
+@import '../../scss/color.scss';
+
+.input {
+    padding: 20px;
+    input {
+        margin-left: 50px;   
+    }
+
+    i {
+        position: absolute;
+        padding: 20px 0 0 5px;
+    }
+
+    &-size-default {
+        font-size: 24px;
+    }    
+    &-size-large {
+        font-size: 32px;
+    }
+    &-size-small {
+        font-size: 16px;
+    }
+
+    &-border-none {
+        input {
+            border: none;     
+        }
+        :focus{
+            outline: none;
+        }
+    }
+
+    &-border-default {
+        input {
+            outline: none;
+            padding: 3px 0px 3px 3px;
+            margin: 5px 1px 3px 0px;
+            border: 1px solid #DDDDDD;
+        }
+        :focus {
+            box-shadow: (0 0 5px rgba(81, 203, 238, 1));
+            padding: 3px 0px 3px 3px;
+            margin: 5px 1px 3px 0px;
+            border: 1px solid rgba(81, 203, 238, 1);
+        }
+    }
+}
