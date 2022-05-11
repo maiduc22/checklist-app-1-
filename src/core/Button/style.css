@@ -24,6 +24,10 @@
   font-size: 16px;
 }
 
+.btn-size-small {
+  font-size: 12px;
+}
+
 .btn-color-primary {
   color: #fff;
 }
@@ -41,7 +45,7 @@
 }
 
 .btn-shape-round {
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .btn-type-primary {
@@ -50,9 +54,10 @@
 }
 
 .btn-type-primary:hover {
-  background-color: #fff;
-  color: #035397;
-  border: #035397 2px solid;
+  -webkit-box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+          box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  -webkit-transform: translateY(-0.1em);
+          transform: translateY(-0.1em);
 }
 
 .btn-type-secondary {
@@ -62,7 +67,9 @@
 }
 
 .btn-type-secondary:hover {
-  background: #035397;
-  color: #fff;
+  -webkit-box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+          box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  -webkit-transform: translateY(-0.1em);
+          transform: translateY(-0.1em);
 }
 /*# sourceMappingURL=style.css.map */

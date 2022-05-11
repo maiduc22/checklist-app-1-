@@ -2,51 +2,45 @@
 
 .icon {
     cursor: pointer;
-    padding: 15px;
+    padding: 10px;
     border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 5px;
+    max-height: fit-content;
+    width: fit-content;
 
     &-size-small {
-        height: 30px;
-        width: 30px;
-        font-size: 24px;
-        border: none;
+        font-size: 12px;
+    }
+    &-size-medium {
+        font-size: 20px;
     }
     &-size-large {
-        font-size: 30px;
-        height: 45px;
-        width: 45px;
+        font-size: 28px;
     }
 
     &-color-default {
-        color: $blue;
-        background-color: $white;
-        border: 2px solid $blue;
+        color: black;
+        background: #EFEFEF;
         border-radius: 50%;
 
         &:hover {
-            color: $white;
-            background: $blue;
+            background-color: #D1D1D1;
         }
     }
 
     &-color-red {
         color: $red;
-        border: none;
     }
     &-color-yellow {
         color: $yellow;
-        border: none;
     }
     &-color-green {
         color: $green;
-        border: none;
     }
     &-color-blue {
         color: $blue;
-        border: none;
     }
 }

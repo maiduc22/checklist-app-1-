@@ -1,16 +1,18 @@
 import React from "react";
 import './style.css'
 const Icon = ({
-    children,
     size = 'medium',
     onClick,
     color = 'default',
+    bg = 'none',
+    children,
     ...props
 }) => {
     return (
         <div 
             onClick={onClick}
-            className={`icon icon-size-${size} icon-color-${color}`}
+            className={`icon icon-size-${size} 
+            icon-color-${color} icon-bg-${bg}`}
         >
             {children}
         </div>

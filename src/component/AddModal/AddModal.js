@@ -4,7 +4,7 @@ import {ReactComponent as AddSvg} from '../../assets/file-add-svgrepo-com.svg'
 import { v4 as uuid } from 'uuid';
 
 import {message} from "antd";
-import { Form, Select, DatePicker, Modal} from 'antd'
+import { Form, Select, DatePicker} from 'antd'
 import 'antd/dist/antd.css'
 import "./AddModal.css"
 import { useDispatch} from 'react-redux';
@@ -12,7 +12,7 @@ import { useDispatch} from 'react-redux';
 
 
 import ButtonCustom from '../../core/Button';
-
+import Modal from '../../core/Modal';
 
 function AddModal() {
     const [level, setLevel] = useState()                //priority level
@@ -73,46 +73,56 @@ function AddModal() {
                 <ButtonCustom 
                     type='primary'
                     onClick={showModal}
+                    content='New Task'
                 >
-                    New Task                                                                                                            
+                                                                                                                               
                 </ButtonCustom>
 
                 <ButtonCustom
                     onClick={() => dispatch({type: 'Clear'})}
                     type = 'secondary'
+                    content='Clear'
                 >
-                    Clear
+                   
                 </ButtonCustom>
             </div>
             
-            <Modal title='Add Task' visible={isModalVisible} onOk={(e) => handleOk(e)} onCancel={handleCancel}>
-                <div>
-                    <Form 
-                        className='edit-form'
-                        labelCol={{span: 6}}
-                        wrapperCol={{span: 18}}
-                    >
-                        <Form.Item 
-                            className='task-input' 
-                            label="Title"
+            <div>
+                <Modal
+                    visible={isModalVisible}
+                    onCancel={handleCancel}
+                    onOk={handleOk}
+                    title='Add Task'
+                    width='450px'
+                    height='max-content'
+                >
+                    <div>
+                        <Form 
+                            className='edit-form'
+                            labelCol={{span: 6}}
+                            wrapperCol={{span: 18}}
                         >
-                            <Input required={true} value={title} onChange={(e) => setTitle(e.target.value)}/>
-                        </Form.Item>
-                        <Form.Item  label="Priority Level">
-                            <Select onChange={handleSelectTag}> 
-                                <Select.Option value="Highest">Highest</Select.Option>
-                                <Select.Option value="Critical">Critical</Select.Option>
-                                <Select.Option value="Alarming">Alarming</Select.Option>
-                                <Select.Option value="Low">Low</Select.Option>
-                            </Select>
-                        </Form.Item>
-                        <Form.Item label="Deadline">
-                            <DatePicker onChange={handleSelectDate}/>
-                        </Form.Item>
-                    </Form>
-                </div>
-      
-            </Modal>
+                            <Form.Item 
+                                className='task-input' 
+                                label="Title"
+                            >
+                                <Input required={true} value={title} onChange={(e) => setTitle(e.target.value)}/>
+                            </Form.Item>
+                            <Form.Item  label="Priority Level">
+                                <Select onChange={handleSelectTag}> 
+                                    <Select.Option value="Highest">Highest</Select.Option>
+                                    <Select.Option value="Critical">Critical</Select.Option>
+                                    <Select.Option value="Alarming">Alarming</Select.Option>
+                                    <Select.Option value="Low">Low</Select.Option>
+                                </Select>
+                            </Form.Item>
+                            <Form.Item label="Deadline">
+                                <DatePicker onChange={handleSelectDate}/>
+                            </Form.Item>
+                        </Form>
+                    </div>
+                </Modal>
+            </div>
         </div>
         )
       }

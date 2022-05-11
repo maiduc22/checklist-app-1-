@@ -10,13 +10,17 @@
     justify-content: center;
     align-items: center;
     margin: 0 5px 0 0px;
+
     &-size-large{
         font-size: 20px;
     }
-
     &-size-medium{
         font-size: 16px;
     }
+    &-size-small{
+        font-size: 12px;
+    }
+
 
     &-color-primary {
         color: $white;
@@ -32,16 +36,18 @@
     }
 
     &-shape-round{
-        border-radius: 15px;
+        border-radius: 5px;
     }
 
     &-type-primary{
         background: $blue;
         color: $white;
         &:hover {
-            background-color: $white;
-            color: $blue;
-            border: $blue 2px solid;
+            // background-color: $white;
+            // color: $blue;
+            // border: $blue 2px solid;
+            box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+            transform: translateY(-0.1em);
         }
     }
 
@@ -50,8 +56,8 @@
         color: $blue;
         border: $blue 2px solid;
         &:hover {
-            background: $blue;
-            color: $white;
+            box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+            transform: translateY(-0.1em);
         } 
     }
 }

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import { Modal, Form, Select, DatePicker, Input  } from 'antd';
+import {Form, Select, DatePicker, Input  } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
+
+import Modal from '../../core/Modal';
+import ButtonCustom from '../../core/Button';
 
 const EditModal = ({id}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -50,7 +53,14 @@ const EditModal = ({id}) => {
         >
           <EditOutlined />
         </button>
-        <Modal title='Edit Task' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <Modal 
+            title='Edit Task' 
+            visible={isModalVisible} 
+            onOk={handleOk} 
+            onCancel={handleCancel}
+            width='450px'
+            height='max-content'
+        >
             <div>
                 <Form 
                     className='edit-form'

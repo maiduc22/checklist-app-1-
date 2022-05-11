@@ -1,73 +1,66 @@
 import React from "react";
-import { Button, Dropdown, Menu } from "antd";
-import {
-    UserOutlined,
-    BellFilled
-} from '@ant-design/icons'
+
+import Icon from '../../core/Icon'
+import Dropdown from "../../core/Dropdown";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './style.css'
 
-const HeaderBar = () => {
+import {FaRegUser} from 'react-icons/fa'
+import {FiLogOut, FiSettings, FiInfo, FiSearch} from 'react-icons/fi'
+
+import { useSelector } from "react-redux";
+
+const HeaderBar = ({searchInput, setSearchInput}) => {
     const history = useNavigate()
-    const menu = (
-        <Menu
-        items={[
-            {
-              label: (
-                <a target="_blank" rel="noopener noreferrer" href="">
-                  1st menu item
-                </a>
-              ),
-            },
-
-            {
-              label: (
-                <a target="_blank" rel="noopener noreferrer" href="">
-                  2nd menu item
-                </a>
-              ),
-            },
-
-            {
-              label: (
-                <a target="_blank" rel="noopener noreferrer" href="">
-                  3rd menu item
-                </a>
-              ),
-            },
-          ]}
-        ></Menu>
-    )
-    
-    const handleClickUserBtn = () => {      
-        history('/')
-    }
-    const handleClickNotiBtn = () => {
-
-    }
-
+    const username = useSelector(state => state.user.username)
     return (
-        <div className="headerbar">
-            <div className="headerbar-wrapper">
-                <Button 
-                  type='primary' 
-                  className="btn-user" 
-                  onClick={handleClickNotiBtn}
-                  shape = "circle"
+        <div className="header">
+            <div className="header-content">
+                <Dropdown
+                    title={
+                        <Icon
+                            size="medium"
+                        >
+                            <FaRegUser />
+                        </Icon>
+                    }
+                    width='125px'
+                    className='header-content-button'
                 >
-                  <BellFilled />
-                </Button>
-
-                <Dropdown overlay={menu} placement='bottom'>
-                    <Button 
-                      type='primary' 
-                      className="btn-user" 
-                      onClick={handleClickUserBtn}
-                      shape = 'circle'    
+                    <div className="header-content-dropdown">User Info <FiInfo /></div>
+                    <div className="header-content-dropdown">
+                        Setting <FiSettings/>
+                    </div>
+                    <div 
+                        className="header-content-dropdown"
+                        onClick={() => history('/')}
                     >
-                      <UserOutlined />
-                    </Button>
-                </Dropdown> 
+                        Log out <FiLogOut />
+                    </div>
+                </Dropdown>
+
+                <div className="header-content-welcome">
+                    Welcome, {username}!
+                </div>
+            </div>
+
+            <div className="header-search" style={{background: '#EFF1F2'}}>
+                <FiSearch style={{fontSize: '16px'}}/>
+                <input
+                  style={{
+                    margin: '0 10px 0 0',
+                    width: '220px',
+                    border: 'none',
+                    fontSize: '18px',
+                    padding: '5px',    
+                    background: '#EFF1F2'              
+                  }}
+
+                  placeholder={`Search`}
+                  value={searchInput}
+                  onChange = {(e) => setSearchInput(e.target.value)}	
+                ></input>
             </div>
         </div>    
     )

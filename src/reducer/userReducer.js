@@ -20,12 +20,12 @@ export default function userReducer(state = initialState, action) {
       case LOGIN_USER_USERNAME:
         return {
           ...state,
-          username: action.payload.username,
+          username: action.payload,
         }
       case LOGIN_USER_PASSWORD:
         return {
           ...state,
-          password: action.payload.password,
+          password: action.payload  ,
         }
       default:
         return state

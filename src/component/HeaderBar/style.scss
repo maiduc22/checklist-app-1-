@@ -1,0 +1,45 @@
+.header{
+    box-shadow: 3px 3px #E2E4E5;
+    width: 100vw;
+    height: 60px;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    &-content {
+        display: flex;
+        align-items: center;
+        
+        &-dropdown {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &-welcome {
+            padding: 0 15px;
+
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 3px;
+        }
+    }
+
+    &-search {
+        // margin-left: 860px;
+        background: #EFF1F2;
+        border-radius: 0px;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 850px;
+        input{
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+}

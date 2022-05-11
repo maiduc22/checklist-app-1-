@@ -10,6 +10,8 @@ import {
 	handlePassword 
 } from '../../action/login'
 
+import {IoMdPersonAdd} from 'react-icons/io';
+
 import Icon from '../../core/Icon';
 import ButtonCustom from '../../core/Button';
 
@@ -81,12 +83,8 @@ const LoginForm = ()  => {
 						</Form.Item>
 
 						<div className='action-wrapper'>
-								<Form.Item name="remember" valuePropName="checked" noStyle>
-								<Checkbox className='login-action'>Remember me</Checkbox>
-								</Form.Item>
-
-								<a href="" className='login-action'>
-									Forgot password
+								<a href="" className='login-action' style={{color: '#035397'}}>
+									Forgot password?
 								</a>
 						</div>
 
@@ -95,24 +93,20 @@ const LoginForm = ()  => {
 								className='btn-login'
 								type='primary'
 								onClick={handleLoginBtn}
-							>
-								Log In
+                                content = 'Log In'
+							>	
 							</ButtonCustom>
 
 							<ButtonCustom
 								className='btn-newacc'
 								type='secondary'
-								
-							>
-								Create Account
+								content='Create Account'
+                                icon={<IoMdPersonAdd/>}
+							>	    
 							</ButtonCustom>
 						</div>
 					</Form>
 				</div>
-
-				{/* <div className='image-wrapper'>
-					
-				</div> */}
 			</div>
 		</div>
 	)

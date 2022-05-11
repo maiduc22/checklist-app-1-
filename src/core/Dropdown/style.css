@@ -1,0 +1,31 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  cursor: pointer;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 110%;
+  padding: 10px;
+  background: #fff;
+  -webkit-box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+          box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  color: #333;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.dropdown-content-item {
+  font-weight: 600;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-content-item:hover {
+  background-color: #f4f4f4;
+}
+/*# sourceMappingURL=style.css.map */

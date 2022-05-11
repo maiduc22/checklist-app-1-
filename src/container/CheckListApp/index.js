@@ -27,7 +27,7 @@ const CheckList = () => {
       <div className='app-container'>
         <div>
           <div className="headerbar">
-              <HeaderBar></HeaderBar>
+              <HeaderBar searchInput={searchInput} setSearchInput={setSearchInput}></HeaderBar>
           </div>
         </div>
 
@@ -41,21 +41,6 @@ const CheckList = () => {
               </Col>
               <Col span={4}></Col>
               <Col span={12} style={{textAlign: 'right'}}>
-                <SearchOutlined style={{fontSize: '16px'}}></SearchOutlined>
-                <input
-                  style={{
-                    margin: '0 10px 0 0',
-                    width: '220px',
-                    border: 'none',
-                    fontSize: '18px',
-                    padding: '5px',
-                    background: '#EFF1F2'
-                    
-                  }}
-                  placeholder={`Type to search`}
-                  value={searchInput}
-                  onChange = {(e) => handleChange(e)}	
-                ></input>
               </Col>
             </Row>
       

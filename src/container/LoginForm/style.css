@@ -6,6 +6,10 @@
 	align-items: center;
 	justify-content: center;
 	background-color: #F6F5F7;
+
+    background-image: url(../../assets/bg-01.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
 	
 }
 
@@ -33,7 +37,8 @@
 	font-size: 32px;
 	font-weight: 900;
 	font-family: 'Poppin';
-	
+    color: #035397;
+    letter-spacing: 2px;
 }
 .form-wrapper p{
 	font-size: 16px;
@@ -48,7 +53,7 @@
 
 .form-wrapper .action-wrapper{
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 
 .login-action {
@@ -60,7 +65,7 @@
 	content: "";
 	position: absolute;
 	width: 0;
-	height: 2px;
+	height: 1px;
 	bottom: 0;
 	left: 0;
 	background-color: #035397;

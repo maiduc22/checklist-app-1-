@@ -7,19 +7,24 @@ const ButtonCustom = ({
     children,
     onClick,
     size = 'medium',
+    content,
     icon,
     type = 'primary', 
     shape = 'round',
     background = '',
     color = '',
+    width = '',
+    height = '',
     ...props
 }) => {
     return (
         <div
             onClick={onClick}
             className = {`btn btn-size-${size} btn-icon-${icon} btn-type-${type} btn-shape-${shape}`} 
+            style={{width: width, height: height}}
         >
-            {children}
+            {icon && <div className="button-icon">{icon}</div>}
+            {content && <span className="button-content">{content}</span>}
         </div>
     )
 }
